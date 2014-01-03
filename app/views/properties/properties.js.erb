@@ -16,14 +16,14 @@ $(document).ready(function() {
 		return false;
 	});
 
-	$(".delete_photo").live('click', function() {
+	$(".delete_photo").click(function() {
 		$(this).siblings('input').val(1);
 		$(this).parent().parent().parent().hide();
 
 		return false;
 	});
 
-	$(".featured").live('click', function() {
+	$(".featured").click(function() {
 		$(".featured").attr('checked', false);
 		$(this).attr('checked', true);
 	});
@@ -97,7 +97,7 @@ $(document).ready(function() {
   		return false;
   	});
 
-  	$(".reset_filters").live('click', function() {
+  	$(".reset_filters").click(function() {
   		$(".sliderbar").noUiSlider("move", {
   			setTo: [0, 100]
   		});
@@ -122,6 +122,12 @@ $(document).ready(function() {
 
 	var map = new google.maps.Map(document.getElementById("big_map"), myOptions);
 
+	var marker = new google.maps.Marker({
+    map: map,
+	  position: new google.maps.LatLng(42.7958, -77.8172)
+	});
+
+	marker.setVisible(true);
 
 	var infowindow = new google.maps.InfoWindow({
 		content: "hello world"
@@ -135,15 +141,16 @@ $(document).ready(function() {
   	<% end %>
 
 	function add_address_marker(address, description, map) {
-	  	var geocoder = new google.maps.Geocoder();
-
-		geocoder.geocode( { 'address': address}, function(results, status) {
+	  var geocoder = new google.maps.Geocoder();
+        geocoder.geocode( { 'address': address}, function(results, status) {
 	      if (status == google.maps.GeocoderStatus.OK) {
 	        var marker = new google.maps.Marker({
 	            map: map,
 	            position: results[0].geometry.location,
 	            title: address
 	        });
+
+					marker.setMap(map);
 
 	        marker.setVisible(true);
 
