@@ -104,4 +104,9 @@ class PropertiesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+  def property_params
+    params.require(:property).permit(:address, :description, :square_footage, :bedrooms, :rooms, :laundy, :price, :unit, :summer, :utilities, :parking)
+  end
 end
