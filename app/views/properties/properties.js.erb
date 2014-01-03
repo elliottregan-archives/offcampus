@@ -97,7 +97,7 @@ $(document).ready(function() {
   		return false;
   	});
 
-  	$(".reset_filters").click(function() {
+	$(document).on('click', '.reset_filters', function() {
   		$(".sliderbar").noUiSlider("move", {
   			setTo: [0, 100]
   		});
