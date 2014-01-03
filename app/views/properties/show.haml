@@ -1,10 +1,11 @@
 %h3.property-title= @property.address
-- if @property.has_photo?
-  #slides
-    .slides_container
-      - @property.photos.each do |photo|
-        %div
-          = image_tag photo.photo.url(:medium)
+
+%div.photos
+  - if @property.has_photo?
+    - @property.photos.each do |photo|
+      %div
+        = image_tag photo.photo.url(:medium)
+
 %dl.show
   %section
     %h4 Contact info
@@ -27,14 +28,6 @@
     %h4 Property Info
     %dt Bedrooms:
     %dd= @property.bedrooms
-    - if @property.rooms > 0
-      %dt Rooms:
-      %dd
-    - if @property.square_footage != 0
-      %dt Square Footage:
-      %dd
-        = @property.square_footage
-        square feet
     %dt Parking:
     %dd= @property.parking ? 'yes' : 'no'
     %dt Laundry:

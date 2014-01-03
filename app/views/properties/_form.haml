@@ -16,24 +16,19 @@
       = f.label :description
       = f.text_area :description
     %li
-      = f.label :square_footage
-      = f.text_field :square_footage, :size => 4
-    %li
       = f.label :bedrooms, 'Number of Bedrooms'
       = f.text_field :bedrooms, :size => 2
-    %li
-      = f.label :rooms, 'Rooms'
-      = f.text_field :rooms, :size => 2
-  %h4 Additional Info
-  %ol
-    %li
-      = f.label :laundry, 'Laundry Included?'
-      = f.check_box :laundry
     %li
       = f.label :price, 'Price'
       $#{f.text_field :price, :size => 4}
       per
       \#{f.select :unit, options_for_select([ ['Month', 'month'], ['Year', 'year'], ['Semester', 'semester'] ])}
+
+  %h4 Additional Info
+  %ol
+    %li
+      = f.label :laundry, 'Laundry Included?'
+      = f.check_box :laundry
     %li
       = f.label :summer, 'Available for Summer'
       = f.check_box :summer
