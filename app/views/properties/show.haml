@@ -1,10 +1,17 @@
+
+= link_to 'Back to all listings', dashboard_path, :class => "btn", :action => 'list'
+= link_to 'Edit Listing', edit_property_path(@property), :class => "btn"
+
 %h3.property-title= @property.address
 
-%div.photos
+.photos
   - if @property.has_photo?
     - @property.photos.each do |photo|
-      %div
-        = image_tag photo.photo.url(:medium)
+      .image_wrapper
+        %a.image{:href => "#"}
+          = image_tag photo.photo.url(:medium)
+.description
+  = @property.description
 
 %dl.show
   %section
@@ -36,9 +43,3 @@
       %dt Utilities:
       %dd= @property.utilities
 
-%h4.wide Description
-
-.description
-  = @property.description
-= link_to 'Back to Dashboard', dashboard_path, :class => "btn", :action => 'list'
-= link_to 'Edit Listing', edit_property_path(@property), :class => "btn"

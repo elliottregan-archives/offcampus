@@ -1,0 +1,22 @@
+%h3= @property.address
+%dl
+  %dt Landlord:
+  %dd= @property.landlord.name
+  %dt Phone:
+  %dd= @property.landlord.phone
+  %dt Email:
+  %dd= @property.landlord.email
+  %dt Laundry included:
+  %dd= @property.laundry ? 'yes' : 'no'
+  %dt Price:
+  %dd
+    $#{@property.price} per #{@property.unit}
+  %dt Number of Bedrooms:
+  %dd= @property.bedrooms
+  %dt Square Footage:
+  %dd= @property.square_footage
+.description
+  = @property.description
+= link_to 'Edit', edit_property_path(@property)
+|
+\#{link_to 'Back', properties_path}

@@ -1,0 +1,40 @@
+$input-background: #eee;
+$input-text: darken(#d3d3d3, 50%);
+
+fieldset {
+  padding: .5em 0;
+}
+
+.inline {
+  display: inline-block;
+}
+
+label {
+  color: #424242;
+  font-weight: bold;
+  display: block;
+  margin: 0 0 .5em;
+}
+
+input, textarea {
+  display: block;
+  background-color: $input-background;
+  color: $input-text;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -o-border-radius: 3px;
+  padding: 6px;
+  border: 1px solid darken($input-background, 20%);
+  font-size: 1.2em;
+}
+
+textarea {
+  min-height: 200px;
+}
+
+input[type=checkbox] {
+  display: inline;
+  + label {
+    display: inline-block;
+  }
+}
