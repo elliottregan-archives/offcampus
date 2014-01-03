@@ -1,0 +1,28 @@
+<h1>Listing properties</h1>
+
+<table>
+  <tr>
+    <th>Landlord</th>
+    <th>Address</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th>Laundry</th>
+    <th></th>
+  </tr>
+
+<% @properties.each do |property| %>
+  <tr>
+    <td><%= property.landlord.name %></td>
+    <td><%= property.address %></td>
+    <td><%= property.description %></td>
+    <td><%= property.price %> a <%= property.unit %></td>
+    <td><%= property.laundry ? 'included' : 'not included' %></td>
+    <td>
+      <% if user_signed_in? and property.landlord_id == @user.landlord.id %>
+        <%= link_to 'Edit', edit_property_path(property) %>
+        <%= link_to 'Destroy', property, confirm: 'Are you sure?', method: :delete %>
+      <% end %>
+    </td>
+  </tr>
+<% end %>
+</table>

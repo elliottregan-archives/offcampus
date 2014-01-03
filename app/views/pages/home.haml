@@ -1,0 +1,37 @@
+%section
+  %a{:href => '/list'}
+    .view_by.students
+      %span.students Students: 
+      %br View All Listings
+  %a{:href => '/landing'}
+    .view_by.landlords
+      %span.landlords Landlords:
+      %br Add Your Property
+%section
+  #big_map
+
+  %section
+    - @featured.each_with_index do |property, index|
+      - if index % 2 == 0
+        .row
+
+      %a{:href => 'properties/' + property.id.to_s }
+        .post
+          - if property.has_photo?
+            = image_tag property.featured_photo.photo.url(:medium)
+
+          %h4
+            = property.address
+
+          %p
+            = property.bedrooms
+            bedrooms
+
+          %p
+            = "$" + property.price.round.to_s
+            per 
+            = property.unit
+
+    %p 
+
+      = link_to 'Landlords, get your properties featured right here on the homepage!', { :action => 'list' }, { :class => 'view_by view_all' }

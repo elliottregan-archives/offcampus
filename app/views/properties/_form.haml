@@ -1,0 +1,78 @@
+= form_for(@property, :html => { :multipart => true }) do |f|
+  - if @property.errors.any?
+    #error_explanation
+      %h4
+        = pluralize(@property.errors.count, "error")
+        prohibited this property from being saved:
+      %ul
+        - @property.errors.full_messages.each do |msg|
+          %li= msg
+  %h4 Basic Info
+  %ol
+    %li
+      = f.label :address
+      = f.text_field :address
+    %li
+      = f.label :description
+      = f.text_area :description
+    %li
+      = f.label :square_footage
+      = f.text_field :square_footage, :size => 4
+    %li
+      = f.label :bedrooms, 'Number of Bedrooms'
+      = f.text_field :bedrooms, :size => 2
+    %li
+      = f.label :rooms, 'Rooms'
+      = f.text_field :rooms, :size => 2
+  %h4 Additional Info
+  %ol
+    %li
+      = f.label :laundry, 'Laundry Included?'
+      = f.check_box :laundry
+    %li
+      = f.label :price, 'Price'
+      $#{f.text_field :price, :size => 4}
+      per
+      \#{f.select :unit, options_for_select([ ['Month', 'month'], ['Year', 'year'], ['Semester', 'semester'] ])}
+    %li
+      = f.label :summer, 'Available for Summer'
+      = f.check_box :summer
+    %li
+      = f.label :utilities, "Included utilities"
+      = f.text_field :utilities
+    %li
+      = f.label :parking, 'Parking included?'
+      = f.check_box :parking
+
+
+  %h4 Property Photos
+
+  %ol.photos
+    = f.fields_for :photos do |photo_form|
+      %li.photo
+        - if not photo_form.object.new_record?
+          %ol.forms
+            %li.delete
+
+              %a.delete_photo{:href => "#", :class => 'btn warning'} remove photo
+              = photo_form.hidden_field :_destroy, :value => 0
+
+            %li.featured_check
+              = photo_form.label :main, "Feature this photo (only one)"
+              = photo_form.check_box :main, :class => "featured"
+
+            %li.preview
+              - if not photo_form.object.new_record?
+                = image_tag photo_form.object.photo.url(:medium)
+        - if photo_form.object.new_record?
+          %ol.forms
+            %li 
+              = photo_form.label :main, "Feature this photo"
+              = photo_form.check_box :main, :class => "featured"
+
+            %li
+              = photo_form.file_field :photo, :class => 'btn'
+
+    = add_photo_link('+ Add New Photo')
+    .actions
+      = f.submit
