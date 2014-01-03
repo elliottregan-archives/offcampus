@@ -47,3 +47,4 @@ end
 gem 'paperclip'
 gem 'haml'
 gem 'devise'
+gem 'protected_attributes'
