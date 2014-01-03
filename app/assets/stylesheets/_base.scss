@@ -17,3 +17,23 @@ section {
 	max-width: 960px;
 	margin: auto;
 }
+
+.card {
+	padding: 1em;
+	background-color: white;
+	border: darken(white, 20%);
+	border-radius: 3px;
+}
+
+.photos {
+	.image_wrapper {
+		width: 200px;
+		height: 200px;
+		display: inline-block;
+	}
+
+	.image {
+		width: 200px;
+		height: 200px;
+	}
+}

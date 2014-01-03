@@ -1,5 +1,6 @@
 @import 'reset';
 @import 'header';
+@import 'form_elements';
 
 html {
   background-image: url(noise.png);
@@ -48,10 +49,6 @@ h3 {
 
 #login a:hover {
   text-decoration: underline;
-}
-
-input {
-  padding: 4px;
 }
 
 #overlays {
@@ -133,98 +130,8 @@ input {
   font-size: 1.4em;
 }
 
-.registration_wrapper {
-  width: 300px;
-  margin: 140px auto;
-  padding: 20px 30px;
-  background-color: rgb(168, 218, 160);
-  border-radius: 6px;
-  -moz-border-radius: 6px;
-  -o-border-radius: 6px;
-  font: .9em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
-  -moz-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.45);
-  -webkit-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.45);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.45);
-  border: 1px solid #6c8c66;
-  height: 250px;
-  position: relative;
-}
-
-.registration_wrapper.sign_up {
-  height: 290px;
-}
-
-.registration_wrapper h2 {
-  text-align: center;
-  color: #696969;
-  font-size: 2em;
-  padding: 0;
-}
-
-.registration_wrapper form {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-.registration_wrapper input {
-  width: 100%;
-}
-
-.registration_wrapper label, .registration_wrapper input[type ="checkbox"] {
-  text-align: left;
-  width: auto;
-  margin-top: 10px;
-}
-
-form {
-  margin: 20px 0;
-  width: 700px;
-}
-
 form h4 {
   padding-top: 40px;
-}
-
-form li {
-  padding: 6px;
-}
-
-form label {
-  float: left;
-  width: 170px;
-  text-align: right;
-  margin-right: 17px;
-  line-height: 23px;
-  color: #424242;
-  font-weight: bold;
-}
-
-form input, form textarea {
-  width: 350px;
-  background-color: rgba(255, 255, 255, 0.84);
-  border-radius: 3px;
-  -moz-border-radius: 3px;
-  -o-border-radius: 3px;
-  padding: 6px;
-  border: 1px solid rgba(164, 164, 164, 0.67);
-  font-size: 1.2em;
-}
-
-form textarea {
-  height: 200px;
-}
-
-input[type = "file"].btn {
-  margin: 0;
-}
-
-ol.photos {
-  padding: 40px;
-}
-
-ol.photos li.preview {
-
 }
 
 ol.photos img {
