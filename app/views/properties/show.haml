@@ -28,14 +28,6 @@
     %h4 Property Info
     %dt Bedrooms:
     %dd= @property.bedrooms
-    - if @property.rooms > 0
-      %dt Rooms:
-      %dd
-    - if @property.square_footage != 0
-      %dt Square Footage:
-      %dd
-        = @property.square_footage
-        square feet
     %dt Parking:
     %dd= @property.parking ? 'yes' : 'no'
     %dt Laundry:
