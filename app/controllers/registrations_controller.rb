@@ -12,6 +12,8 @@ class RegistrationsController < Devise::RegistrationsController
     @landlord = Landlord.new()
     @landlord.user_id = resource.id
     @landlord.email = resource.email
+    @landlord.name = params['landlord']['name']
+    @landlord.phone = params['landlord']['phone']
     @landlord.hide_email = false
     @landlord.save
   end
