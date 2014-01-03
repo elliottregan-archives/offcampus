@@ -2,7 +2,7 @@
 %html
   %head
     %title Geneseo Offcampus
-    = stylesheet_link_tag    "application", :media => "all"
+    = stylesheet_link_tag "application"
     = javascript_include_tag "application"
     = csrf_meta_tags
     %script{:src => "/js/jquery.nouislider.js", :type => "text/javascript"}
@@ -34,7 +34,7 @@
           = link_to('Login', new_user_session_path)
           |
           \#{link_to('Sign up', new_user_registration_path)}
-      #header_wrapper
+      .wrapper
         %h1 
           %a{:href => "/"} Geneseo Off-Campus
         %h2
