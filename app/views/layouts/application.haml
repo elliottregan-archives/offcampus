@@ -14,16 +14,7 @@
     %link{:href => "/css/nouislider.css", :rel => "stylesheet", :type => "text/css"}/
     %link{:href => "http://fonts.googleapis.com/css?family=Bree+Serif", :rel => "stylesheet", :type => "text/css"}
     %script{:src => "http://maps.googleapis.com/maps/api/js?key=AIzaSyB6H6ENo1Vugdb0LPW_xS1Ef3DlQvjBemY&sensor=true", :type => "text/javascript"}
-    :javascript
-      function initialize() {
-        var myOptions = {
-          center: new google.maps.LatLng(42.7958, -77.8172),
-          zoom: 15,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        var map = new google.maps.Map(document.getElementById("big_map"), myOptions);
-      }
-  %body{:onload => "initialize()"}
+  %body
     %header
       #login
         Landlords:

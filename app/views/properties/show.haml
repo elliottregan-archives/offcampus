@@ -1,10 +1,11 @@
 %h3.property-title= @property.address
-- if @property.has_photo?
-  #slides
-    .slides_container
-      - @property.photos.each do |photo|
-        %div
-          = image_tag photo.photo.url(:medium)
+
+%div.photos
+  - if @property.has_photo?
+    - @property.photos.each do |photo|
+      %div
+        = image_tag photo.photo.url(:medium)
+
 %dl.show
   %section
     %h4 Contact info

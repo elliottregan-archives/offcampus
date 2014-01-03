@@ -122,13 +122,6 @@ $(document).ready(function() {
 
 	var map = new google.maps.Map(document.getElementById("big_map"), myOptions);
 
-	var marker = new google.maps.Marker({
-    map: map,
-	  position: new google.maps.LatLng(42.7958, -77.8172)
-	});
-
-	marker.setVisible(true);
-
 	var infowindow = new google.maps.InfoWindow({
 		content: "hello world"
 	});
@@ -140,30 +133,29 @@ $(document).ready(function() {
   			', map);
   	<% end %>
 
-	function add_address_marker(address, description, map) {
+  function add_address_marker(address, description, map) {
 	  var geocoder = new google.maps.Geocoder();
-        geocoder.geocode( { 'address': address}, function(results, status) {
-	      if (status == google.maps.GeocoderStatus.OK) {
-	        var marker = new google.maps.Marker({
-	            map: map,
-	            position: results[0].geometry.location,
-	            title: address
-	        });
+			geocoder.geocode( { 'address': address}, function(results, status) {
+			if (status == google.maps.GeocoderStatus.OK) {
+				var marker = new google.maps.Marker({
+						map: map,
+						position: results[0].geometry.location,
+						title: address
+				});
 
-					marker.setMap(map);
-
-	        marker.setVisible(true);
-
-	        google.maps.event.addListener(marker, "click", function() {
-	        	infowindow.setContent(description);
-	        	infowindow.open(map, this);
-	        });
-	      } else {
-	        console.log("Geocode was not successful for the following reason: " + status);
-	      }
-	    });	
-	}
+				google.maps.event.addListener(marker, "click", function() {
+					infowindow.setContent(description);
+					infowindow.open(map, this);
+				});
+			} else {
+				console.log("Geocode was not successful for the following reason: " + status);
+			}
+		});	
+  }
+	
 });
+
+
 
 function update_sliderbar_readout() {
 	var prices = $(".sliderbar").noUiSlider("getValue");
