@@ -70,22 +70,22 @@ Offcampus::Application.routes.draw do
   # root :to => 'welcome#index'
   root :to => 'pages#home'
 
-  match '/dashboard' => 'landlords#dashboard', :as => :user_root
+  match '/dashboard' => 'landlords#dashboard', :as => :user_root, via: :get
 
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   #match ':controller(/:action(/:id))(.:format)'
-  match 'dashboard' => 'landlords#dashboard'
+  match 'dashboard' => 'landlords#dashboard', via: :get
 
   devise_scope :user do
     get "sign_out", :to => "devise/sessions#destroy"
   end
 
-  match '/list' => 'pages#list'
+  match '/list' => 'pages#list', via: :get
 
-  match '/landing' => 'pages#landing'
+  match '/landing' => 'pages#landing', via: :get
 
-  match '/js/properties' => 'properties#properties'
+  match '/js/properties' => 'properties#properties', via: :get
 end
