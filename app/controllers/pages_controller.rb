@@ -3,6 +3,8 @@ class PagesController < ApplicationController
 		@properties = Property.all
 
 		@featured = Property.where("featured = ?", 1).limit(4)
+
+		@tagline = true
 	end
 
 	def list
