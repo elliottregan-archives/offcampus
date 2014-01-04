@@ -1,0 +1,24 @@
+.property-title {
+  font-size: 2em;
+}
+
+dt, dd {
+  padding: 8px 8px 0 0;
+}
+
+dt {
+	font-weight: bold;
+}
+
+.photos {
+	.image_wrapper {
+		width: 200px;
+		height: 200px;
+		display: inline-block;
+	}
+
+	.image {
+		width: 200px;
+		height: 200px;
+	}
+}
