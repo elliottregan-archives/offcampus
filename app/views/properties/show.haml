@@ -1,5 +1,4 @@
-
-= link_to 'Back to all listings', dashboard_path, :class => "btn", :action => 'list'
+= link_to 'Back to all listings', '/list', :class => "btn"
 = link_to 'Edit Listing', edit_property_path(@property), :class => "btn"
 
 %h3.property-title= @property.address
@@ -42,4 +41,3 @@
     - if @property.utilities != ''
       %dt Utilities:
       %dd= @property.utilities
-
