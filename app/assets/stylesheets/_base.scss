@@ -9,8 +9,26 @@ body {
 	padding-top: 40px;
 }
 
+h1.tagline {
+  font-size: 2em;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+  color: #434343;
+}
+
+h2.tagline {
+  margin: 10px auto;
+  width: 840px;
+}
+
 section {
 	padding: 40px 0;
+}
+
+#content {
+  max-width: 920px;
+  margin: auto;
 }
 
 .wrapper {
@@ -45,17 +63,4 @@ header {
 	background-color: white;
 	border: 1px solid #ddd;
 	border-radius: 3px;
-}
-
-.photos {
-	.image_wrapper {
-		width: 200px;
-		height: 200px;
-		display: inline-block;
-	}
-
-	.image {
-		width: 200px;
-		height: 200px;
-	}
 }
