@@ -20,8 +20,9 @@
       .wrapper
         %h1 
           %a{:href => "/"} Geneseo Off-Campus
-        %h2
-          %a{:href => "/"} The best place to find off-campus housing.
+        - if @tagline
+          %h2
+            %a{:href => "/"} The best place to find off-campus housing.
         .login_links
           - if user_signed_in?
             Logged in as: 
@@ -33,6 +34,7 @@
             = link_to('Login', new_user_session_path)
             |
             =link_to('Sign up', new_user_registration_path)
+        
     #overlays
       - if notice != nil
         .notice
