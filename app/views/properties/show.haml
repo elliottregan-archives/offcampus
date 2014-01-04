@@ -8,7 +8,7 @@
   - if @property.has_photo?
     - @property.photos.each do |photo|
       .image_wrapper
-        %a.image{:href => "#"}
+        %a.expandable_image{:href => "#"}
           = image_tag photo.photo.url(:medium)
 .description
   = @property.description
