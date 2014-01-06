@@ -1,7 +1,7 @@
 $input-background: #eee;
 $input-text: darken(#d3d3d3, 50%);
 
-fieldset {
+fieldset, section {
   padding: .5em 0;
 }
 
@@ -37,4 +37,12 @@ input[type=checkbox] {
   + label {
     display: inline-block;
   }
+}
+
+.btn {
+  background-color: #d3d3d3;
+  border: 1px solid darken(#d3d3d3, 20%);
+  padding: .4em;
+  cursor: pointer;
+  display: inline-block;
 }
