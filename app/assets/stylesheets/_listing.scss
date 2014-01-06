@@ -2,14 +2,6 @@
   font-size: 2em;
 }
 
-dt, dd {
-  padding: 8px 8px 0 0;
-}
-
-dt {
-	font-weight: bold;
-}
-
 .photos {
 	.image_wrapper {
 		width: 200px;
@@ -21,4 +13,10 @@ dt {
 		width: 200px;
 		height: 200px;
 	}
+}
+
+.post a.image {
+	display: block;
+	overflow: hidden;
+	height: 200px;
 }

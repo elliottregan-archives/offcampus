@@ -1,27 +1,5 @@
-@import 'reset';
-@import 'header';
-@import 'form_elements';
-
 html {
   background-image: url(noise.png);
-}
-
-h1 {
-  padding: 12px 12px 0;
-  color: #4d72b1;
-  text-shadow: 0 2px 0 rgb(255, 255, 255);
-  font: 3em "Bree Serif", serif;
-}
-
-h1:hover {
-  color: #6785bb;
-}
-
-h2 {
-  font: 1.4em "Bree Serif", serif;
-  color: #6a6a6a;
-  text-shadow: 0 1px 0 rgb(255, 255, 255);
-  margin-top: -8px;
 }
 
 strong {
@@ -146,38 +124,6 @@ a.btn:active {
   -moz-box-shadow: inset 0 1px 2px black;
   -webkit-box-shadow: inset 0 1px 2px black;
   box-shadow: inset 0 1px 2px black;
-}
-
-.registration_tab {
-  position: absolute;
-  bottom: -50px;
-  width: 260px;
-  padding: 30px 20px 20px;
-  background-color: rgba(0, 0, 0, 0.85);
-  z-index: -100;
-  text-align: center;
-  border-radius: 0 0 8px 8px;
-  -moz-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.53);
-  -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.53);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.53);
-  color: #ffffff;
-}
-
-.registration_tab a {
-  text-decoration: underline;
-}
-
-.registration_wrapper a {
-  clear: both;
-  color: inherit;
-  margin: 20px 10px 0;
-  display: inline-block;
-}
-
-section {
-  padding: 10px 0;
-  margin: auto;
-  border-bottom: 1px solid rgba(166, 177, 182, 0.49);
 }
 
 #big_map {
@@ -312,78 +258,6 @@ section {
   color: #f2f2f2;
 }
 
-.view_by {
-  display: inline-block;
-  margin: 20px 10px 0;
-  border: 2px solid #e9eaec;
-  width: 454px;
-  padding: 30px 0;
-  border-radius: 6px;
-  background: -moz-linear-gradient(90deg, #fbfcfc 0%, white 100%) #fbfcfc;
-  background: -webkit-gradient(linear, left bottom, left top, from(#fbfcfc), to(white)) #fbfcfc;
-  text-align: center;
-  color: #b6b6b6;
-  font: 1.35em "Lucida Grande", Lucida, Verdana, sans-serif;
-  cursor: pointer;
-}
-
-.view_all {
-  margin: auto;
-  max-width: 920px;
-}
-
-.view_by span {
-  color: #9d9d9d;
-  font-size: 1.3em;
-}
-
-.view_by.bedrooms {
-  width: 110px;
-  height: 20px;
-  padding: 10px 0;
-  font-size: 1em;
-  margin-right: 5px;
-  line-height: 20px
-}
-
-.view_by.bedrooms.short {
-  width: 70px;
-}
-
-.view_by:first-of-type {
-  margin-left: 0;
-}
-
-.view_by:last-of-type {
-  margin-right: 0;
-}
-
-.view_by:hover {
-  color: #7e7e7e;
-  background-color: #ffffff;
-  border-color: #d2d4d8;
-}
-
-.view_by.students:hover {
-  border-color: #aff5b8;
-  background: -moz-linear-gradient(90deg, #f0fdf2 0%, white 100%) #fbfcfc;
-  background: -webkit-gradient(linear, left bottom, left top, from(#f0fdf2), to(white)) #fbfcfc;
-}
-
-.view_by.landlords:hover {
-  border-color: #98eafe;
-  background: -moz-linear-gradient(90deg, #ecfbfe 0%, white 100%) #fbfcfc;
-  background: -webkit-gradient(linear, left bottom, left top, from(#ecfbfe), to(white)) #fbfcfc;
-}
-
-.view_by:hover span.students {
-  color: #4db150;
-}
-
-.view_by:hover span.landlords {
-  color: #4d72b1;
-}
-
 /* @group Listings */
 
 #sort_categories {
@@ -459,60 +333,3 @@ section {
 }
 
 /* @end */
-
-/* @group House info */
-
-.listings img.house {
-  margin: 10px;
-  float: left;
-}
-
-h4 {
-  color: #4d72b1;
-  font: bold .9em "Lucida Grande", Lucida, Verdana, sans-serif;
-  margin: 8px 10px 6px 0;
-}
-
-.listings dl {
-  font-size: .8em;
-}
-
-/* @end */
-
-/* @group Listing */
-
-table {
-  margin: 24px 0;
-}
-
-tr {
-  border-top: 1px solid #cfd5d7;
-}
-
-tr:last-of-type {
-  border-bottom: 1px solid #cfd5d7;
-}
-
-.dashboard td img {
-  margin-right: 15px;
-  padding: 1px;
-  background: white;
-  box-shadow: 0px 0px 3px black;
-  border: 1px solid #cecece;
-}
-
-.dashboard td {
-  padding: 15px 5px;
-  vertical-align: top;
-}
-
-.dashboard td ul {
-  list-style-type: circle;
-  margin-left: 18px;
-}
-
-.dashboard td.actions {
-  padding-top: 18px;
-  padding-left: 20px;
-}
-

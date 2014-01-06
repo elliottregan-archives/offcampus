@@ -1,12 +1,32 @@
+$logo-blue: #4d72b1;
+$logo-brown: #434343;
+
 html {
 	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 	color: #404041;
-	min-width: 760px;
+	background-color: whitesmoke
 }
 
 body {
 	margin: 0;
-	padding-top: 40px;
+}
+
+h1 {
+  padding: 12px 12px 0;
+  color: $logo-blue;
+  text-shadow: 0 2px 0 rgb(255, 255, 255);
+  font: 3em "Bree Serif", serif;
+}
+
+h1:hover {
+  color: lighten($logo-blue,10%);
+}
+
+h2 {
+  font: 1.4em "Bree Serif", serif;
+  color: #6a6a6a;
+  text-shadow: 0 1px 0 rgb(255, 255, 255);
+  margin-top: -8px;
 }
 
 h1.tagline {
@@ -14,7 +34,7 @@ h1.tagline {
   text-align: center;
   padding: 10px;
   border-radius: 8px;
-  color: #434343;
+  color: $logo-brown;
 }
 
 h2.tagline {
@@ -22,13 +42,16 @@ h2.tagline {
   width: 840px;
 }
 
-section {
-	padding: 40px 0;
-}
-
-#content {
+.content {
   max-width: 920px;
   margin: auto;
+
+  &.contained_content {
+	  background-color: white;
+	  padding: 1em;
+	  border: 1px solid #ccc;
+	  border-radius: 3px;
+	}
 }
 
 .wrapper {
@@ -36,8 +59,10 @@ section {
 	margin: auto;
 }
 
-header {
+.site_header {
 	position: relative;
+	background-image: -moz-linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(226, 233, 235, 0.49) 37.9%, #c5d2d7 100%);
+	background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(255, 255, 255, 0)), color-stop(0.379, rgba(226, 233, 235, 0.49)), to(#c5d2d7));
 
 	.login_links {
 		font-size: .9em;
@@ -54,6 +79,15 @@ header {
 				text-decoration: underline;
 		  	}
 		}			
+	}
+
+	h1 {
+		padding-left: 0;
+	}
+
+	.wrapper {
+		max-width: 920px;
+		margin: auto;
 	}
 }
 
