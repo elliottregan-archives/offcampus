@@ -65,16 +65,34 @@ class PropertiesController < ApplicationController
     @property = Property.new(params[:property])
     @property.featured = false
     @property.landlord_id = User.find(current_user).landlord.id
+
+    amount = 5000 # amount in cents
+
+    customer = Stripe::Customer.create(
+      :email => current_user.email,
+      :card  => params[:stripeToken]
+    )
+
+    charge = Stripe::Charge.create(
+      :customer => customer.id,
+      :amount   => amount,
+      :description => 'Geneseo Off Campus',
+      :currency => 'usd'
+    )
     
     respond_to do |format|
       if @property.save
-        format.html { redirect_to @property, notice: 'Property was successfully created.' }
+        format.html { redirect_to '/dashboard', notice: 'Property was successfully created.' }
         format.json { render json: @property, status: :created, location: @property }
       else
         format.html { render action: "new" }
         format.json { render json: @property.errors, status: :unprocessable_entity }
       end
     end
+
+  rescue Stripe::CardError => e
+    flash[:error] = e.message
+    redirect_to properties_path
   end
 
   # PUT /properties/1
@@ -84,7 +102,7 @@ class PropertiesController < ApplicationController
 
     respond_to do |format|
       if @property.update_attributes(params[:property])
-        format.html { redirect_to @property, notice: 'Property was successfully updated.' }
+        format.html { redirect_to '/dashboard', notice: 'Property was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -100,7 +118,7 @@ class PropertiesController < ApplicationController
     @property.destroy
 
     respond_to do |format|
-      format.html { redirect_to properties_url }
+      format.html { redirect_to '/dashboard' }
       format.json { head :no_content }
     end
   end
