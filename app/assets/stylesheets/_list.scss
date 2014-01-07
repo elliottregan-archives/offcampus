@@ -55,6 +55,15 @@
   float: left;
 }
 
+.sliderbar {
+  margin-left: 23px;
+
+  .noUi_readout {
+    display: block;
+    margin-left: 3px;
+  }
+}
+
 .row {
   margin: 10px 0;
 }
