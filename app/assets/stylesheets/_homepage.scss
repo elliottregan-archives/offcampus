@@ -65,3 +65,19 @@
 
 }
 
+
+.featured .property {
+  padding-top: 30px;
+  width: 33%;
+  float: left;
+
+  .photo {
+    width: 100px;
+    float: left;
+    margin-right: 15px;
+  }
+
+  .description {
+    float: left;
+  }
+}
