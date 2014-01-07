@@ -67,7 +67,7 @@
 
 
 .featured .property {
-  padding-top: 30px;
+  margin-top: 30px;
   width: 33%;
   float: left;
 
@@ -79,5 +79,14 @@
 
   .description {
     float: left;
+
+    h4 {
+      margin-bottom: 5px;
+    }
+
+    p {
+      font-size: 0.9em;
+      line-height: 1.3em;
+    }
   }
 }
