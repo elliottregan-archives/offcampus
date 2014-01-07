@@ -23,10 +23,13 @@ h1:hover {
 }
 
 h2 {
-  font: 1.4em "Bree Serif", serif;
+  font: 1.6em "Bree Serif", serif;
   color: #6a6a6a;
   text-shadow: 0 1px 0 rgb(255, 255, 255);
-  margin-top: -8px;
+}
+
+h3 {
+	font-size: 1.2em
 }
 
 h1.tagline {
@@ -48,9 +51,17 @@ h2.tagline {
 
   &.contained_content {
 	  background-color: white;
-	  padding: 1em;
 	  border: 1px solid #ccc;
 	  border-radius: 3px;
+		
+		section {
+			padding: 1em;
+		}
+
+		.content_header {
+			padding: .5em 1em;
+			border-bottom: 0px solid #ccc;
+		}
 	}
 }
 

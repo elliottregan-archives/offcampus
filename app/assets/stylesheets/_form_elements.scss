@@ -16,7 +16,7 @@ label {
   margin: 0 0 .5em;
 }
 
-input, textarea {
+input:not([type=submit]):not([type=file]):not([type=checkbox]), textarea {
   display: block;
   background-color: $input-background;
   color: $input-text;
@@ -25,7 +25,6 @@ input, textarea {
   -o-border-radius: 3px;
   padding: 6px;
   border: 1px solid darken($input-background, 20%);
-  font-size: 1.2em;
 }
 
 textarea {
@@ -33,16 +32,47 @@ textarea {
 }
 
 input[type=checkbox] {
-  display: inline;
+  display: inline-block;
   + label {
     display: inline-block;
   }
 }
 
+$default_button_color: #d3d3d3;
+$main_action_color: #689DD3;
+
 .btn {
-  background-color: #d3d3d3;
-  border: 1px solid darken(#d3d3d3, 20%);
-  padding: .4em;
+  background-color: $default_button_color;
+  border: none;
   cursor: pointer;
   display: inline-block;
+  border: 0;
+  font-size: .8em;
+  text-align: center;
+  color: #333;
+  transition: all 0.08s;
+  padding: .8em 2em;
+  text-decoration: none;
+  @include border-radius(4px);
+
+  &:hover {
+    background-color: darken($default_button_color, 5%)
+  }
+}
+
+.btn.small {
+  font-size: .8em;
+}
+
+.btn.warning:hover {
+  background-color: #fa5a5a;
+}
+
+.btn.main_action {
+  background-color: $main_action_color;
+  color: white;
+
+  &:hover {
+    background-color: darken($main_action_color, 5%);
+  }
 }
