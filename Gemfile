@@ -52,3 +52,5 @@ gem 'protected_attributes'
 gem 'sqlite3'
 
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+
+gem 'therubyracer'

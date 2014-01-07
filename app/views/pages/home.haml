@@ -10,16 +10,15 @@
 %section.clear
   #big_map.homepage_map
 
-%section
-  - @featured.each_with_index do |property, index|
-    - if index % 2 == 0
-      .row
+%section.featured
+  - @featured.each do |property|
 
-    %a{:href => 'properties/' + property.id.to_s }
-      .post
+    %a.property{:href => 'properties/' + property.id.to_s }
+      .photo
         - if property.has_photo?
-          = image_tag property.featured_photo.photo.url(:medium)
+          = image_tag property.featured_photo.photo.url(:thumb)
 
+      .description
         %h4
           = property.address
 
@@ -31,5 +30,6 @@
           = "$" + property.price.round.to_s
           per 
           = property.unit 
+
   .homepage_link_padding.full_width
-    = link_to 'Landlords, get your properties featured right here on the homepage!', { :action => 'list' }, { :class => 'homepage_link' }
+    = link_to 'Landlords, get your properties featured right here on the homepage!', { :action => 'landing' }, { :class => 'homepage_link' }

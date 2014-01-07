@@ -5,6 +5,26 @@
   background-color: #f7f8f8;
 }
 
+.map_window {
+  line-height: 1.35;
+  overflow: hidden;
+  white-space: nowrap;
+
+  h4 {
+    margin-bottom: 10px;
+  }
+
+  a {
+    display: block;
+    color: blue;
+    padding-top: 10px;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
 .clear {
   clear: both;
 }
@@ -65,3 +85,28 @@
 
 }
 
+
+.featured .property {
+  margin-top: 30px;
+  width: 33%;
+  float: left;
+
+  .photo {
+    width: 100px;
+    float: left;
+    margin-right: 15px;
+  }
+
+  .description {
+    float: left;
+
+    h4 {
+      margin-bottom: 5px;
+    }
+
+    p {
+      font-size: 0.9em;
+      line-height: 1.3em;
+    }
+  }
+}

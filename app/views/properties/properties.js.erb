@@ -3,9 +3,9 @@ $(document).ready(function() {
 		//$(this).before('<%= raw (render :partial => 'photo', :object => Photo.new).gsub("\n", "\\n") %>');
 
 		// Extract the previous photo index
-		var index = parseInt($(this).siblings('li.photo:last').find('input').attr('name').match(/[\d]+/)[0]);
+		var index = parseInt($(this).siblings('.photo:last').find('input').attr('name').match(/[\d]+/)[0]);
 
-		var photo_element = $(this).siblings('li.photo:last').clone();
+		var photo_element = $(this).siblings('.photo:last').clone();
 
 		photo_element.find('input').each(function(i, input) {
 			$(input).attr('name', $(input).attr('name').replace(index, index + 1));
@@ -18,14 +18,14 @@ $(document).ready(function() {
 
 	$(".delete_photo").click(function() {
 		$(this).siblings('input').val(1);
-		$(this).parent().parent().parent().hide();
+		$(this).parent().parent().hide();
 
 		return false;
 	});
 
 	$(".featured").click(function() {
 		$(".featured").attr('checked', false);
-		$(this).attr('checked', true);
+		$(this).attr('checked', 'checked');
 	});
 
 
@@ -127,10 +127,14 @@ $(document).ready(function() {
 	});
 
   	<% @properties.each_with_index do |property, index| %>
-  		add_address_marker('<%= property.address %>, Geneseo NY 14454', '<strong><%= property.address %></strong> \
+  		add_address_marker('<%= property.address %>, Geneseo NY 14454', '<div class="map_window"><h4><%= property.address %></h4> \
   			<%= image_tag property.featured_photo.photo.url(:thumb) if property.has_photo? %> \
+            <p><%= property.bedrooms %> bedroom<%= property.bedrooms == 1 ? '' : 's' %></p> \
+\
+            <p>$<%= property.price %> per <%= property.unit %></p> \
+\
   			<p><%= link_to "read more", property %></p> \
-  			', map);
+  			</div>', map);
   	<% end %>
 
   function add_address_marker(address, description, map) {

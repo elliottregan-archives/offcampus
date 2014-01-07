@@ -45,6 +45,11 @@ h2.tagline {
   width: 840px;
 }
 
+h4 {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
 .content {
   max-width: 920px;
   margin: auto;
@@ -108,4 +113,8 @@ h2.tagline {
 	background-color: white;
 	border: 1px solid #ddd;
 	border-radius: 3px;
+}
+
+.clear {
+    clear: both;
 }

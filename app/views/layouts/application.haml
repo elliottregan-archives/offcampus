@@ -48,6 +48,7 @@
       - if @tagline
         .content
           = yield
-      .content.contained_content
-        = yield
+      - else
+        .content.contained_content
+          = yield
     %footer
