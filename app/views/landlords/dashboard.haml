@@ -2,30 +2,31 @@
   %h2 Your Account
 %section#properties
   %h3 Properties
-  %table.property_list
-    %thead
-      %tr
-        %th Photo
-        %th Address
-        %th Bedrooms
-        %th Rent
-        %th Availability
-        %th Actions
-    %tbody
-      - @landlord.properties.each do |property|
-        %tr.property
-          %td
-            .table_thumbnail
-              - if property.has_photo?
-                = image_tag property.featured_photo.photo.url(:thumb)
-          %td= property.address
-          %td #{property.bedrooms} bedroom#{'s' if property.bedrooms > 1}
-          %td $#{property.price} per #{property.unit}
-          %td
-          %td.actions
-            = link_to 'view listing', property, :class => 'btn'
-            = link_to 'Edit', edit_property_path(property), :class => 'btn'
-            = link_to 'Delete', property, confirm: 'Are you sure?', method: :delete, :class => 'btn warning'
+  - if @landlord.properties.length > 0
+    %table.property_list
+      %thead
+        %tr
+          %th Photo
+          %th Address
+          %th Bedrooms
+          %th Rent
+          %th Availability
+          %th Actions
+      %tbody
+        - @landlord.properties.each do |property|
+          %tr.property
+            %td
+              .table_thumbnail
+                - if property.has_photo?
+                  = image_tag property.featured_photo.photo.url(:thumb)
+            %td= property.address
+            %td #{property.bedrooms} bedroom#{'s' if property.bedrooms > 1}
+            %td $#{property.price} per #{property.unit}
+            %td
+            %td.actions
+              = link_to 'view listing', property, :class => 'btn'
+              = link_to 'Edit', edit_property_path(property), :class => 'btn'
+              = link_to 'Delete', property, confirm: 'Are you sure?', method: :delete, :class => 'btn warning'
   = link_to '+ Add Property', new_property_path, :class => 'btn'
 %section#personal_info
   %h3 Your Information

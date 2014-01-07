@@ -22,6 +22,7 @@ class PropertiesController < ApplicationController
     @properties = Property.all
 
     @highest_price = Property.highest_price
+    @highest_price = 0 if @highest_price.nil?
 
     respond_to do |format|
       format.js { render :layout => false }
