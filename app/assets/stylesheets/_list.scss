@@ -17,7 +17,7 @@
   padding: 8px 9px;
   cursor: pointer;
   color: #5a5a5a;
-  font: .9em "Lucida Grande", Lucida, Verdana, sans-serif;
+  font: .8em "Lucida Grande", Lucida, Verdana, sans-serif;
 }
 
 #size_categories li:hover {
@@ -76,6 +76,12 @@
 
 .post:last-of-type {
 
+}
+
+.post a.photo {
+  display: block;
+  height: 200px;
+  overflow: hidden;
 }
 
 .post img {
@@ -161,16 +167,21 @@
 }
 
 .post dt, .post dd {
-  padding: 1px 0;
   color: #585858;
   font-weight: 200;
+  text-align: left;
+  line-height: 1.6em;
 }
 
 .post dt {
-  width: 70px;
-  text-align: left;
+  width: 75px;
   color: #363636;
-  font-weight: 500;
+  float: left;
+}
+
+.post dd {
+  margin-left: 90px;
+  padding-top: 1px;
 }
 
 .post h4 {
