@@ -5,7 +5,7 @@
     - if user_signed_in? and property.landlord_id == @user.landlord.id
       = link_to 'edit info', edit_property_url(property), :class => 'edit'
     - if property.has_photo?
-      %a{:href => "/properties/" + property.id.to_s, :class => 'image'}
+      %a{:href => "/properties/" + property.id.to_s}
         = image_tag property.featured_photo.photo.url(:medium), :class => 'house'
     .info
       %a{:href => "/properties/" + property.id.to_s}
