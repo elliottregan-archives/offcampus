@@ -1,12 +1,32 @@
-<%= form_tag charges_path do %>
+<%= form_tag charges_path, id: 'chargeForm' do %>
+  <%= hidden_field_tag 'stripeToken' %>
   <article>
     <label class='amount'>
-      $5.00
+      $20.00
     </label>
   </article>
 
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-    data-description="A month's subscription"
-    data-amount="500"></script>
+  <button id='checkoutButton'>Purchase Listing</button>
+
+  <script>
+    var handler = StripeCheckout.configure({
+      key: '<%= Rails.configuration.stripe[:publishable_key] %>',
+      image: '/square-image.png',
+      token: function(token, args) {
+        // Use the token to create the charge with a server-side script.
+        $("#stripeToken").val(token.id);
+	$("#chargeForm").submit();
+      }
+    });
+
+    document.getElementById('checkoutButton').addEventListener('click', function(e) {
+      // Open Checkout with further options
+      handler.open({
+        name: 'Demo Site',
+        description: '2 widgets ($20.00)',
+        amount: 5000
+      });
+      e.preventDefault();
+    });
+  </script>
 <% end %>

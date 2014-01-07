@@ -1,0 +1,23 @@
+$(document).ready(function() {
+	var handler = StripeCheckout.configure({
+		key: '<%= Rails.configuration.stripe[:publishable_key] %>',
+		image: '/square-image.png',
+		token: function(token, args) {
+			// Use the token to create the charge with a server-side script.
+			$("#stripeToken").val(token.id);
+			$("#propertyForm").submit();
+		}
+	});
+
+	$("#propertyCreateSubmit").click(function() {
+		// Open Checkout with further options
+		handler.open({
+			name: 'Geneseo Off Campus',
+			description: 'One Property Listing',
+			amount: 5000,
+			email: $("#user_email").val()
+		});
+
+		return false;
+	});
+});
