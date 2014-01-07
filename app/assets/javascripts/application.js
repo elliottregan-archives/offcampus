@@ -18,5 +18,5 @@ $(document).ready(function() {
     $(this).parent().fadeOut();
   });
 
-  $('a.image').fluidbox();
+  $('a.expandable_image').fluidbox();
 });

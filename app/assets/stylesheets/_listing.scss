@@ -1,0 +1,22 @@
+.property-title {
+  font-size: 2em;
+}
+
+.photos {
+	.image_wrapper {
+		width: 200px;
+		height: 200px;
+		display: inline-block;
+	}
+
+	.image {
+		width: 200px;
+		height: 200px;
+	}
+}
+
+.post a.image {
+	display: block;
+	overflow: hidden;
+	height: 200px;
+}

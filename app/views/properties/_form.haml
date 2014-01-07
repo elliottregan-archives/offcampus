@@ -43,22 +43,18 @@
 
 	.card
 		%h4 Property Photos
-		%ol.photos
-			= f.fields_for :photos do |photo_form|
-				%fieldset.photo
-					- if not photo_form.object.new_record?
-						%fieldset.delete
-							%a.delete_photo{:href => "#", :class => 'btn warning'} remove photo
-							= photo_form.hidden_field :_destroy, :value => 0
-					%fieldset.preview
-						- if not photo_form.object.new_record?
-							= image_tag photo_form.object.photo.url(:medium)
-					%fieldset 
-						= photo_form.check_box :main, :class => "featured"
-						= photo_form.label :main, "Feature this photo"
-
+		= f.fields_for :photos do |photo_form|
+			%fieldset.photo
+				- if not photo_form.object.new_record?
+					%fieldset.delete
+						%a.delete_photo{:href => "#", :class => 'btn warning'} remove photo
+						= photo_form.hidden_field :_destroy, :value => 0
+				- if not photo_form.object.new_record?	
 					%fieldset
-						= photo_form.file_field :photo, :class => 'btn'
+						= image_tag photo_form.object.photo.url(:medium)
+				%fieldset 
+					= photo_form.check_box :main, :class => "featured"
+					= photo_form.label :main, "Feature this photo"
 
 			= add_photo_link('+ Add New Photo')
 
@@ -70,3 +66,5 @@
 					= f.submit 'Purchase Listing', id: 'propertyCreateSubmit'
 				- else
 					= f.submit 'Update Listing', id: 'propertyUpdateSubmit'
+	.actions
+		= f.submit

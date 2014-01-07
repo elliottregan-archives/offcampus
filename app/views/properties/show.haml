@@ -7,7 +7,7 @@
   - if @property.has_photo?
     - @property.photos.each do |photo|
       .image_wrapper
-        %a.image{:href => "#"}
+        %a.expandable_image{:href => "#"}
           = image_tag photo.photo.url(:medium)
 .description
   = @property.description
@@ -15,27 +15,37 @@
 %dl.show
   %section
     %h4 Contact info
-    %dt Owner:
-    %dd= @property.landlord.name
+    - if @property.landlord.name
+      %dt Owner:
+      %dd= @property.landlord.name
     - if @property.landlord.hide_email == false
       %dt Email:
       %dd
         %a{:href => "mailto:#{@property.landlord.user.email}"}= @property.landlord.user.email
-    %dt Phone:
-    %dd= @property.landlord.phone
+    - if @property.landlord.phone
+      %dt Phone:
+      %dd= @property.landlord.phone
   %section
     %h4 Rent Details
-    %dt Price:
-    %dd
-      $#{@property.price} per #{@property.unit}
-    %dt Available over the Summer:
-    %dd= @property.summer ? 'yes' : 'no'
+    - if @property.price
+      %dt Price:
+      %dd
+        =@property.price |
+        per 
+        =@property.unit
+    - if @property.summer
+      %dt Available over the Summer:
+      %dd= @property.summer ? 'yes' : 'no'
+
   %section
     %h4 Property Info
+    
     %dt Bedrooms:
     %dd= @property.bedrooms
+    
     %dt Parking:
     %dd= @property.parking ? 'yes' : 'no'
+    
     %dt Laundry:
     %dd= @property.laundry ? 'included' : 'not included'
     - if @property.utilities != ''

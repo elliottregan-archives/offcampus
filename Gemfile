@@ -8,6 +8,7 @@ gem 'mysql2'
 
 # Use SCSS for stylesheets
 gem 'sass-rails'
+gem 'compass-rails'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier'
