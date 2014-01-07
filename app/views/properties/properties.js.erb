@@ -3,9 +3,9 @@ $(document).ready(function() {
 		//$(this).before('<%= raw (render :partial => 'photo', :object => Photo.new).gsub("\n", "\\n") %>');
 
 		// Extract the previous photo index
-		var index = parseInt($(this).siblings('li.photo:last').find('input').attr('name').match(/[\d]+/)[0]);
+		var index = parseInt($(this).siblings('.photo:last').find('input').attr('name').match(/[\d]+/)[0]);
 
-		var photo_element = $(this).siblings('li.photo:last').clone();
+		var photo_element = $(this).siblings('.photo:last').clone();
 
 		photo_element.find('input').each(function(i, input) {
 			$(input).attr('name', $(input).attr('name').replace(index, index + 1));
@@ -25,7 +25,7 @@ $(document).ready(function() {
 
 	$(".featured").click(function() {
 		$(".featured").attr('checked', false);
-		$(this).attr('checked', true);
+		$(this).attr('checked', 'checked');
 	});
 
 
