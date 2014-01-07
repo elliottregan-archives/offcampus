@@ -1,6 +1,4 @@
 - properties.each_with_index do |property, index|
-  - if index % 3 == 0
-    .row
   .post
     - if user_signed_in? and property.landlord_id == @user.landlord.id
       = link_to 'edit info', edit_property_url(property), :class => 'edit'
@@ -17,5 +15,3 @@
       %dd
         $#{property.price}
         %span.pay_period= 'per ' + property.unit
-  - if index % 3 == 2
-    </div>
