@@ -5,6 +5,26 @@
   background-color: #f7f8f8;
 }
 
+.map_window {
+  line-height: 1.35;
+  overflow: hidden;
+  white-space: nowrap;
+
+  h4 {
+    margin-bottom: 10px;
+  }
+
+  a {
+    display: block;
+    color: blue;
+    padding-top: 10px;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
 .clear {
   clear: both;
 }

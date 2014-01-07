@@ -127,10 +127,14 @@ $(document).ready(function() {
 	});
 
   	<% @properties.each_with_index do |property, index| %>
-  		add_address_marker('<%= property.address %>, Geneseo NY 14454', '<strong><%= property.address %></strong> \
+  		add_address_marker('<%= property.address %>, Geneseo NY 14454', '<div class="map_window"><h4><%= property.address %></h4> \
   			<%= image_tag property.featured_photo.photo.url(:thumb) if property.has_photo? %> \
+            <p><%= property.bedrooms %> bedroom<%= property.bedrooms == 1 ? '' : 's' %></p> \
+\
+            <p>$<%= property.price %> per <%= property.unit %></p> \
+\
   			<p><%= link_to "read more", property %></p> \
-  			', map);
+  			</div>', map);
   	<% end %>
 
   function add_address_marker(address, description, map) {
