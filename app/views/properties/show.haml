@@ -1,19 +1,23 @@
 = link_to 'Back to all listings', '/list', :class => "btn"
 = link_to 'Edit Listing', edit_property_path(@property), :class => "btn"
 
-%h3.property-title= @property.address
+%section
+  %h3.property-title= @property.address
 
-.photos
-  - if @property.has_photo?
-    - @property.photos.each do |photo|
-      .image_wrapper
-        %a.expandable_image{:href => "#"}
-          = image_tag photo.photo.url(:medium)
-.description
-  = @property.description
+%section
+  .photos
+    - if @property.has_photo?
+      - @property.photos.each do |photo|
+        .image_wrapper
+          %a.expandable_image{:href => "#"}
+            = image_tag photo.photo.url(:medium), width: 200
+%section
+  .description
+    %p
+      = @property.description.gsub("\n", "</p><p>").html_safe
 
-%dl.show
-  %section
+%section
+  %dl.show
     %h4 Contact info
     - if @property.landlord.name
       %dt Owner:
@@ -25,26 +29,29 @@
     - if @property.landlord.phone
       %dt Phone:
       %dd= @property.landlord.phone
-  %section
+
+%section
+  %dl.show
     %h4 Rent Details
     - if @property.price
-      %dt Price:
+      %dt Rent:
       %dd
-        =@property.price |
+        = '$' + @property.price.to_s
         per 
         =@property.unit
     - if @property.summer
       %dt Available over the Summer:
-      %dd= @property.summer ? 'yes' : 'no'
+      %dd= @property.summer ? 'Yes' : 'No'
 
-  %section
+%section
+  %dl.show
     %h4 Property Info
     
     %dt Bedrooms:
     %dd= @property.bedrooms
     
     %dt Parking:
-    %dd= @property.parking ? 'yes' : 'no'
+    %dd= @property.parking ? 'Yes' : 'No'
     
     %dt Laundry:
     %dd= @property.laundry ? 'included' : 'not included'

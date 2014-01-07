@@ -1,22 +1,38 @@
 .property-title {
+  font-weight: bold;
   font-size: 2em;
 }
 
 .photos {
-	.image_wrapper {
-		width: 200px;
-		height: 200px;
-		display: inline-block;
-	}
+  .image_wrapper {
+    width: 200px;
+    display: inline-block;
+  }
 
-	.image {
-		width: 200px;
-		height: 200px;
-	}
+  img {
+  }
+}
+
+.description p {
+  margin-bottom: 15px;
+  line-height: 1.4em;
 }
 
 .post a.image {
-	display: block;
-	overflow: hidden;
-	height: 200px;
+  display: block;
+  overflow: hidden;
+  height: 200px;
+}
+
+section dt, dd {
+  line-height: 1.5em;
+}
+
+section dt {  
+  width: 200px;
+  float: left;
+}
+
+section dd {
+  margin-left: 200px;
 }
