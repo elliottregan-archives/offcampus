@@ -2,16 +2,18 @@
   .post
     - if user_signed_in? and property.landlord_id == @user.landlord.id
       = link_to 'edit info', edit_property_url(property), :class => 'edit'
-    - if property.has_photo?
-      %a.photo{:href => "/properties/" + property.id.to_s}
-        = image_tag property.featured_photo.photo.url(:medium), :class => 'house'
+    .photo_container
+      - if property.has_photo?
+        %a{:href => "/properties/" + property.id.to_s}
+          = image_tag property.featured_photo.photo.url(:medium), :class => 'property_photo'
     .info
-      %a{:href => "/properties/" + property.id.to_s}
-        %h4= property.address
-    %dl
-      %dt Bedrooms:
-      %dd= property.bedrooms
-      %dt Rent:
-      %dd
-        $#{property.price}
-        %span.pay_period= 'per ' + property.unit
+      .address
+        %a{:href => "/properties/" + property.id.to_s}
+          %h4= property.address
+      %dl
+        %dt Bedrooms:
+        %dd= property.bedrooms
+        %dt Rent:
+        %dd
+          $#{property.price}
+          %span.pay_period= 'per ' + property.unit
