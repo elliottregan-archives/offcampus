@@ -28,67 +28,58 @@ $(document).ready(function() {
 		$(this).attr('checked', 'checked');
 	});
 
-
-	if($(".sliderbar").length > 0) {
-		$(".sliderbar").noUiSlider("init", {
-			startMin: 0,
-			startMax: 100,
-			tracker: function() {
-				update_sliderbar_readout();
-			},
-			change: function() {
-				var prices = $(".sliderbar").noUiSlider("getValue");
-				var bedrooms = $("#size_categories .active a:last").attr('rel');
-
-				$.get("/list", {
-					layout: false,
-					low_price: Math.round(prices[0] * <%= @highest_price / 100 %>),
-					high_price: Math.round(prices[1] * <%= @highest_price / 100 %>),
-					bedrooms: bedrooms
-				}, function(data) {
-					$("section.listing").empty().html(data);
-				});
-			}
-		});
-
-		$(".sliderbar .noUi_sliderKnob").append("<div class='noUi_readout'></div>");
-
-		update_sliderbar_readout();
+	function writeDollar ( ammount ) {
+		$("#price_slider_readout").text( '$' + ammount );
 	}
 
-	$("#slides").slides({
-	    preload: true,
-	    preloadImage: 'img/loading.gif',
-	    play: 5000,
-	    pause: 2500,
-	    hoverPause: true
-  	});
-
-  	$("#slides").show();
+	if($("#price_slider").length > 0) {
+		$("#price_slider").noUiSlider( {
+			range: [0,<%= @highest_price %>],
+			start: <%= @highest_price %>,
+			step: 100,
+			handles: 1,
+			serialization: {
+				to: [$("#price_slider_readout")]
+			},
+			behaviour: "extend-tap"
+		}).change( function() {
+			var price = $("#price_slider").val();
+			var bedrooms = $("#size_categories .active a:last").attr('rel');
+			$.get("/list", {
+				layout: false,
+				low_price: 0,
+				high_price: price,
+				bedrooms: bedrooms
+			}, function(data) {
+				$("section.listing").empty().html(data);
+			});
+		});
+	}
 
   	$("#size_categories li a").click(function () {
   		$("#size_categories li").removeClass('active');
   		$(this).parent().addClass('active');
 
   		var bedrooms = $(this).attr('rel');
-
-		var prices = $(".sliderbar").noUiSlider("getValue");
+		var price = $("#price_slider").val();
 
   		if(bedrooms == '-1') {
+  			$("#bedroom_filter_readout").text("any number of bedrooms");
 	  		$.get("/list", {
 	  			layout: false,
-	  			low_price: Math.round(prices[0] * <%= @highest_price / 100 %>),
-	  			high_price: Math.round(prices[1] * <%= @highest_price / 100 %>)
+	  			low_price: 0,
+	  			high_price: price
 	  		}, function (data) {
 	  			$("section.listing").empty().html(data);
 	  		});
   		}
   		else {
+  			$("#bedroom_filter_readout").text(bedrooms + " bedrooms");
 	  		$.get("/list", {
 	  			layout: false,
 	  			bedrooms: bedrooms,
-	  			low_price: Math.round(prices[0] * <%= @highest_price / 100 %>),
-	  			high_price: Math.round(prices[1] * <%= @highest_price / 100 %>)
+	  			low_price: 0,
+	  			high_price: price
 	  		}, function (data) {
 	  			$("section.listing").empty().html(data);
 	  		});
@@ -98,12 +89,8 @@ $(document).ready(function() {
   	});
 
 	$(document).on('click', '.reset_filters', function() {
-  		$(".sliderbar").noUiSlider("move", {
-  			setTo: [0, 100]
-  		});
-
-		update_sliderbar_readout();
-
+  		$(".sliderbar").val( <%= @highest_price %>);
+  		$("#bedroom_filter_readout").text("pick an option");
   		$("#size_categories li.active").removeClass('active');
   		$("#size_categories li:first").addClass('active');
 

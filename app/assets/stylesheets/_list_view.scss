@@ -13,6 +13,7 @@
   margin: 0 0 1em;
   border: 1px solid #dfdfdf;
   display: table;
+  overflow: hidden;
 
   @media only screen and (max-width: 767px) {
     border-top: none;
@@ -113,11 +114,22 @@
 }
 
 .sliderbar {
-  margin-left: 23px;
+  margin-right: 8em;
+}
 
-  .noUi_readout {
-    display: block;
-    margin-left: 3px;
+.slider_readout {
+  float: right;
+
+  .dollar_sign {
+    vertical-align: top;
+    display: inline-block;
+  }
+
+  input.dollar_amount {
+    width: 5em;
+    display: inline-block !important;
+    margin-top: -8px;
+    line-height: 16px;
   }
 }
 

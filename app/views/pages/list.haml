@@ -8,7 +8,7 @@
   - else
     #size_categories
       %h3.filter_category Number of bedrooms:
-      .toggle_filter_button.toggle_bedroom_filter.filter_button pick an option
+      #bedroom_filter_readout.toggle_filter_button.toggle_bedroom_filter.filter_button pick an option
       %ul.filter_bar.bedroom_filter
         %li.filter_button.one{:class => (@bedrooms == false ? 'active' : '') }
           %a.toggle_bedroom_filter{:href => "#", :rel =>  "-1"}
@@ -51,7 +51,11 @@
             %span.subtext  (#{@counts[6] || 0} available)
     #sort_categories
       %h3.filter_category Price Range
-      .sliderbar
+      
+      .slider_readout
+        %span.dollar_sign $
+        %input.dollar_amount#price_slider_readout.slider{:type => 'number'}
+      #price_slider.sliderbar
 
     %section.listing
       - if @properties.length == 0

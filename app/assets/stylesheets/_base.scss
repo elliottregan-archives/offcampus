@@ -16,6 +16,13 @@ h1 {
   color: $logo-blue;
   text-shadow: 0 2px 0 rgb(255, 255, 255);
   font: 3em "Bree Serif", serif;
+
+  @media only screen and (max-width: 767px) {
+
+  	font-size: 1.8em;
+
+  }
+
 }
 
 h1:hover {
@@ -26,6 +33,12 @@ h2 {
   font: 1.6em "Bree Serif", serif;
   color: #6a6a6a;
   text-shadow: 0 1px 0 rgb(255, 255, 255);
+
+  @media only screen and (max-width: 767px) {
+
+  	font-size: 1.2em;
+
+  }
 }
 
 h3 {

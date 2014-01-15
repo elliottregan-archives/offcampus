@@ -1,7 +1,6 @@
 .homepage_map {
   border: 1px solid #8f9ca2;
   height: 400px;
-  max-width: 920px;
   background-color: #f7f8f8;
 }
 
@@ -29,61 +28,45 @@
   clear: both;
 }
 
-.homepage_link_padding {
-  padding: 1em;
-  display: inline-block;
+
+.homepage_link {
   float: left;
-  width: 50%;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+  width: 100%;
+  display: block;
+  border: 2px solid #e9eaec;
+  padding: 2em 0;
+  margin: .5em 0;
+  border-radius: 6px;
+  background: -moz-linear-gradient(90deg, #fbfcfc 0%, white 100%) #fbfcfc;
+  background: -webkit-gradient(linear, left bottom, left top, from(#fbfcfc), to(white)) #fbfcfc;
+  text-align: center;
+  color: #b6b6b6;
+  font: 1.35em "Lucida Grande", Lucida, Verdana, sans-serif;
+  cursor: pointer;
 
-  .homepage_link {
-    float: left;
-    width: 100%;
-    display: block;
-    border: 2px solid #e9eaec;
-    padding: 30px 0;
-    border-radius: 6px;
-    background: -moz-linear-gradient(90deg, #fbfcfc 0%, white 100%) #fbfcfc;
-    background: -webkit-gradient(linear, left bottom, left top, from(#fbfcfc), to(white)) #fbfcfc;
-    text-align: center;
-    color: #b6b6b6;
-    font: 1.35em "Lucida Grande", Lucida, Verdana, sans-serif;
-    cursor: pointer;
-  }
-
-  &.students {
-    padding-left: 0;
-    .homepage_link:hover {
-      border-color: #aff5b8;
-      background: -moz-linear-gradient(90deg, #f0fdf2 0%, white 100%) #fbfcfc;
-      background: -webkit-gradient(linear, left bottom, left top, from(#f0fdf2), to(white)) #fbfcfc;
-      color: #4db150;
-    }
-  }
-  &.landlords {
-    padding-right: 0;
-    .homepage_link:hover {
-      border-color: #98eafe;
-      background: -moz-linear-gradient(90deg, #ecfbfe 0%, white 100%) #fbfcfc;
-      background: -webkit-gradient(linear, left bottom, left top, from(#ecfbfe), to(white)) #fbfcfc;
-      color: #4d72b1;
-    }
-  }
-
-  :hover {
+  &:hover {
     color: #7e7e7e;
     border-color: #d2d4d8;
   }
 
-  &.full_width {
-    padding: 1em 0;
-    width: 100%;
-  }
-
 }
 
+.students {
+  .homepage_link:hover {
+    border-color: #aff5b8;
+    background: -moz-linear-gradient(90deg, #f0fdf2 0%, white 100%) #fbfcfc;
+    background: -webkit-gradient(linear, left bottom, left top, from(#f0fdf2), to(white)) #fbfcfc;
+    color: #4db150;
+  }
+}
+.landlords {
+  .homepage_link:hover {
+    border-color: #98eafe;
+    background: -moz-linear-gradient(90deg, #ecfbfe 0%, white 100%) #fbfcfc;
+    background: -webkit-gradient(linear, left bottom, left top, from(#ecfbfe), to(white)) #fbfcfc;
+    color: #4d72b1;
+  }
+}
 
 .featured .property {
   margin-top: 30px;

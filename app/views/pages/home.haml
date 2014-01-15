@@ -1,16 +1,16 @@
-%section
-  %a.homepage_link_padding.students{:href => '/list'}
+%section.row
+  %a.students.eight.columns{:href => '/list'}
     .homepage_link
       %p Students: 
       %p View All Listings
-  %a.homepage_link_padding.landlords{:href => '/landing'}
+  %a.landlords.eight.columns{:href => '/landing'}
     .homepage_link
       %p Landlords:
       %p Add Your Property
-%section.clear
+%section.row
   #big_map.homepage_map
 
-%section.featured
+%section.featured.row
   - @featured.each do |property|
 
     %a.property{:href => 'properties/' + property.id.to_s }
@@ -31,5 +31,5 @@
           per 
           = property.unit 
 
-  .homepage_link_padding.full_width
+  .full_width
     = link_to 'Landlords, get your properties featured right here on the homepage!', { :action => 'landing' }, { :class => 'homepage_link' }
