@@ -2,7 +2,7 @@
   text-transform: uppercase;
   font-size: .9em;
   color: #888;
-  margin: .5em 0;
+  margin: .5em 0 1em;
 }
 
 .filter_bar {
@@ -10,13 +10,13 @@
   @include background(linear-gradient(bottom, #f6f6f6, white ));
   @include transition(all 0.3s ease-in-out);
   @include box-sizing(border-box);
-  margin: 18px 0 8px;
+  margin: 0 0 1em;
   border: 1px solid #dfdfdf;
   display: table;
 
   @media only screen and (max-width: 767px) {
     border-top: none;
-    @include border-radius(0);
+    @include border-radius(0 0 6px 6px);
     display: block;
     width: 100%;
     margin: 0 0 1em;
@@ -32,12 +32,18 @@
 }
 
 .toggle_filter_button.filter_button {
+  
+  display: none;
   border: 1px solid #dfdfdf;
   border-bottom-width: 2px; 
   margin-top: .5em;
   &:hover {
     border: 1px solid #dfdfdf;
     border-bottom-width: 2px;
+  }
+
+  @media only screen and (max-width: 767px) {
+    display: block;
   }
 }
 
@@ -56,9 +62,8 @@
     font-size: 1.1em;
     padding: .5em;
 
-    &:first-child {
-      @include border-radius(6px 6px 0 0);
-    }
+    
+    @include border-radius(0);
     &:last-child {
       @include border-radius(0 0 6px 6px);
     }
