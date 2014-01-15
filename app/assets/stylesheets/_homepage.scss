@@ -49,6 +49,14 @@
     border-color: #d2d4d8;
   }
 
+  @media only screen and (max-width: 767px) {
+
+    font-size: 1em;
+    padding: 1em 0;
+    margin-bottom: 0;
+
+  }
+
 }
 
 .students {
