@@ -50,23 +50,15 @@ h4 {
   font-weight: bold;
 }
 
-.content {
-  max-width: 920px;
-  margin: auto;
+.background {
+  background-color: white;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
 
-  &.contained_content {
-	  background-color: white;
-	  border: 1px solid #ccc;
-	  border-radius: 3px;
-		
-		section {
-			padding: 1em;
-		}
-
-		.content_header {
-			padding: .5em 1em;
-			border-bottom: 0px solid #ccc;
-		}
+	.content_header {
+		padding: .5em 1em;
+		border-bottom: 0px solid #ccc;
 	}
 }
 

@@ -44,11 +44,6 @@
         .notice.alert
           = alert
           %button.close —
-    .content_wrapper
-      - if @tagline
-        .content
-          = yield
-      - else
-        .content.contained_content
-          = yield
+    .container{:class => (@tagline ? "nobackground" : "background")}
+      = yield
     %footer

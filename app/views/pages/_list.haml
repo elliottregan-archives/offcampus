@@ -1,19 +1,22 @@
 - properties.each_with_index do |property, index|
-  .post
-    - if user_signed_in? and property.landlord_id == @user.landlord.id
-      = link_to 'edit info', edit_property_url(property), :class => 'edit'
-    .photo_container
-      - if property.has_photo?
+  %li.one-third.column
+    .post
+      .photo_container
+        - if user_signed_in? and property.landlord_id == @user.landlord.id
+          = link_to 'edit info', edit_property_url(property), :class => 'edit_btn'
         %a{:href => "/properties/" + property.id.to_s}
-          = image_tag property.featured_photo.photo.url(:medium), :class => 'property_photo'
-    .info
-      .address
-        %a{:href => "/properties/" + property.id.to_s}
-          %h4= property.address
-      %dl
-        %dt Bedrooms:
-        %dd= property.bedrooms
-        %dt Rent:
-        %dd
-          $#{property.price}
-          %span.pay_period= 'per ' + property.unit
+          - if property.has_photo?
+            = image_tag property.featured_photo.photo.url(:medium), :class => 'property_photo'
+          - else
+            .property_filler_img
+      .info
+        .address
+          %a{:href => "/properties/" + property.id.to_s}
+            %h4= property.address
+        %dl
+          %dt Bedrooms:
+          %dd= property.bedrooms
+          %dt Rent:
+          %dd
+            $#{property.price}
+            %span.pay_period= 'per ' + property.unit

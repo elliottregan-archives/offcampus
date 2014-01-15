@@ -1,0 +1,121 @@
+.filter_category {
+  text-transform: uppercase;
+  font-size: .9em;
+  color: #888;
+  margin: .5em 0;
+}
+
+.filter_bar {
+  @include border-radius(6px);
+  @include background(linear-gradient(bottom, #f6f6f6, white ));
+  @include transition(all 0.3s ease-in-out);
+  @include box-sizing(border-box);
+  margin: 18px 0 8px;
+  border: 1px solid #dfdfdf;
+  display: table;
+
+  @media only screen and (max-width: 767px) {
+    border-top: none;
+    @include border-radius(0);
+    display: block;
+    width: 100%;
+    margin: 0 0 1em;
+    max-height: 0;
+    opacity: 0;
+    &.visible {
+      max-height: 320px;
+      opacity: 1;
+    }
+
+  }
+
+}
+
+.toggle_filter_button.filter_button {
+  border: 1px solid #dfdfdf;
+  border-bottom-width: 2px; 
+  margin-top: .5em;
+  &:hover {
+    border: 1px solid #dfdfdf;
+    border-bottom-width: 2px;
+  }
+}
+
+.filter_button {
+  display: table-cell;
+  padding: 8px 9px;
+  cursor: pointer;
+  text-align: center;
+  color: #5a5a5a;
+  font: .8em "Lucida Grande", Lucida, Verdana, sans-serif;
+
+  @media only screen and (max-width: 767px) {
+
+    display: block;
+    text-align: left;
+    font-size: 1.1em;
+    padding: .5em;
+
+    &:first-child {
+      @include border-radius(6px 6px 0 0);
+    }
+    &:last-child {
+      @include border-radius(0 0 6px 6px);
+    }
+
+  }
+
+  .subtext {
+    font-size: .8em;
+    color: grey;
+    white-space: pre;
+  }
+
+  &:hover {
+    border-right: 1px solid #e1e1e1;
+    border-left: 1px solid #e1e1e1;
+    padding: 8px;
+    background-color: white;
+
+    @media only screen and (max-width: 767px) {
+      padding: .5em;
+      border-left: none;
+      border-right: none;
+      border: none;
+
+    }
+  }
+
+  &.active {
+    border-right: 1px solid #d4d4d4;
+    border-left: 1px solid #d4d4d4;
+    padding: .5em;
+    background-color: #ffffff;
+    @include box-shadow(inset 0 1px 3px rgba(0, 0, 0, 0.19));
+    color: #ec643f;
+
+    @media only screen and (max-width: 767px) {
+      background-color: #ec643f;
+      color: #fff;
+      border: none;
+
+      .subtext {
+        color: #eee;
+      }
+    }
+  }
+
+}
+
+.sliderbar {
+  margin-left: 23px;
+
+  .noUi_readout {
+    display: block;
+    margin-left: 3px;
+  }
+}
+
+.row {
+  margin: 10px 0;
+}

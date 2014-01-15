@@ -19,4 +19,8 @@ $(document).ready(function() {
   });
 
   $('a.expandable_image').fluidbox();
+
+  $(".toggle_bedroom_filter").click(function() {
+  	$('.bedroom_filter').toggleClass("visible");
+  });
 });

@@ -7,38 +7,50 @@
     = render :partial => 'list', :locals => { :properties => @properties }
   - else
     #size_categories
-      %ul.filter_bar
-        %li{:class => (@bedrooms == false ? 'active' : '') }
-          %a{:href => "#", :rel =>  "-1"}
-            All (#{@all.length})
+      %h3.filter_category Number of bedrooms:
+      .toggle_filter_button.toggle_bedroom_filter.filter_button pick an option
+      %ul.filter_bar.bedroom_filter
+        %li.one{:class => (@bedrooms == false ? 'active' : '') }
+          %a.filter_button.toggle_bedroom_filter{:href => "#", :rel =>  "-1"}
+            Any 
+            %span.subtext (#{@all.length} available)
 
         %li{:class => (@bedrooms == 0 ? 'active' : '')}
-          %a{:href => "#", :rel => "0"} Studio
+          %a.filter_button.toggle_bedroom_filter{:href => "#", :rel => "0"} 
+            Studio
+            %span.subtext (#{@counts[0] || 0} available)
         
         %li{:class => (@bedrooms == 1 ? 'active' : '')}
-          %a{:href => "#", :rel => "1"}
-            1 Bedroom (#{@counts[1] || 0})
+          %a.filter_button.toggle_bedroom_filter{:href => "#", :rel => "1"} 
+            1 
+            %span.subtext (#{@counts[1] || 0} available)
         
         %li{:class => (@bedrooms == 2 ? 'active' : '')}
-          %a{:href => "#", :rel => "2"}
-            2 Bedrooms (#{@counts[2] || 0})
+          %a.filter_button.toggle_bedroom_filter{:href => "#", :rel => "2"} 
+            2 
+            %span.subtext (#{@counts[2] || 0} available)
         
         %li{:class => (@bedrooms == 3 ? 'active' : '')}
-          %a{:href => "#", :rel => "3"}
-            3 Bedrooms (#{@counts[3] || 0})
+          %a.filter_button.toggle_bedroom_filter{:href => "#", :rel => "3"} 
+            3 
+            %span.subtext (#{@counts[3] || 0} available)
         
         %li{:class => (@bedrooms == 4 ? 'active' : '')}
-          %a{:href => "#", :rel => "4"}
-            4 Bedrooms (#{@counts[4] || 0})
+          %a.filter_button.toggle_bedroom_filter{:href => "#", :rel => "4"} 
+            4 
+            %span.subtext (#{@counts[4] || 0} available)
         
         %li{:class => (@bedrooms == 5 ? 'active' : '')}
-          %a{:href => "#", :rel => "5"}
-            5 Bedrooms (#{@counts[5] || 0})
+          %a.filter_button.toggle_bedroom_filter{:href => "#", :rel => "5"} 
+            5 
+            %span.subtext (#{@counts[5] || 0} available)
         
         %li{:class => (@bedrooms == true ? 'active' : '')}
-          %a{:href => "#", :rel => "6"}
-            6+ Bedrooms (#{@counts[6] || 0})
+          %a.filter_button.toggle_bedroom_filter{:href => "#", :rel => "6"} 
+            6+
+            %span.subtext  (#{@counts[6] || 0} available)
     #sort_categories
+      %h3.filter_category Price Range
       .sliderbar
 
     %section.listing
@@ -46,6 +58,7 @@
         Nothing found.
         %a.reset_filters.btn{:href => '#'} reset all filters
       - else
-        = render :partial => 'list', :locals => { :properties => @properties }
+        %ul.row
+          = render :partial => 'list', :locals => { :properties => @properties }
     
     %div.clear
