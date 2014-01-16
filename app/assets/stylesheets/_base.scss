@@ -1,10 +1,13 @@
 $logo-blue: #4d72b1;
 $logo-brown: #434343;
+$link-color: #ec643f;
+$mobile-break: "only screen and (max-width: 767px)";
+
 
 html {
 	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 	color: #404041;
-	background-color: whitesmoke
+	background-color: whitesmoke;
 }
 
 body {
@@ -17,7 +20,7 @@ h1 {
   text-shadow: 0 2px 0 rgb(255, 255, 255);
   font: 3em "Bree Serif", serif;
 
-  @media only screen and (max-width: 767px) {
+  @media #{$mobile-break} {
 
   	font-size: 1.8em;
 
@@ -34,7 +37,7 @@ h2 {
   color: #6a6a6a;
   text-shadow: 0 1px 0 rgb(255, 255, 255);
 
-  @media only screen and (max-width: 767px) {
+  @media #{$mobile-break} {
 
   	font-size: 1.2em;
 
@@ -94,7 +97,7 @@ h4 {
 		top: 0;
 		right: 0;
 		a {
-		  	color: #ec643f;
+		  	color: $link-color;
 			&:hover {
 		  		text-shadow: 0 1px 0 #ffffff;
 				text-decoration: underline;
@@ -109,6 +112,15 @@ h4 {
 	.wrapper {
 		max-width: 920px;
 		margin: auto;
+	}
+}
+
+.breadcrumb {
+	font-size: .9em;
+	color: $link-color;
+
+	&:hover {
+		text-decoration: underline;
 	}
 }
 

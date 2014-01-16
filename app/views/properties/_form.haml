@@ -1,69 +1,68 @@
 = form_for(@property, :html => { :multipart => true, :id => 'propertyForm' }) do |f|
-    - if @property.errors.any?
-        #error_explanation
-            %h4
-                = pluralize(@property.errors.count, "error")
-                prohibited this property from being saved:
-            %ul
-                - @property.errors.full_messages.each do |msg|
-                    %fieldset= msg
-    .card
-        %h4 Basic Info
-        %fieldset
-            = f.label :address
-            = f.text_field :address
-        %fieldset
-            = f.label :description
-            = f.text_area :description
-        %fieldset
-            = f.label :bedrooms, 'Number of Bedrooms'
-            = f.text_field :bedrooms
-        %fieldset
-            = f.label :price, 'Price'
-            %span $
-            = f.number_field :price, class: "inline", min: 0, step: 100
-        %fieldset
-            billed per
-            = f.select :unit, options_for_select([['Semester', 'semester'], ['Month', 'month'], ['Year', 'year']])
+		- if @property.errors.any?
+				#error_explanation
+						%h4
+								= pluralize(@property.errors.count, "error")
+								prohibited this property from being saved:
+						%ul
+								- @property.errors.full_messages.each do |msg|
+										%fieldset= msg
+		.card
+				%h4 Basic Info
+				%fieldset
+						= f.label :address
+						= f.text_field :address
+				%fieldset
+						= f.label :description
+						= f.text_area :description
+				%fieldset
+						= f.label :bedrooms, 'Number of Bedrooms'
+						= f.text_field :bedrooms
+				%fieldset
+						= f.label :price, 'Price'
+						%span $
+						= f.number_field :price, class: "inline", min: 0, step: 100
+				%fieldset
+						billed per
+						= f.select :unit, options_for_select([['Semester', 'semester'], ['Month', 'month'], ['Year', 'year']])
 
-    .card
-        %h4 Additional Info
-        %fieldset
-            = f.check_box :laundry
-            = f.label :laundry, 'Laundry Included'
-        %fieldset
-            = f.check_box :summer
-            = f.label :summer, 'Available for Summer'
-        %fieldset
-            = f.check_box :utilities
-            = f.label :utilities, "Included utilities"
-        %fieldset
-            = f.check_box :parking
-            = f.label :parking, 'Parking included?'
+		.card
+				%h4 Additional Info
+				%fieldset
+						= f.check_box :laundry
+						= f.label :laundry, 'Laundry Included'
+				%fieldset
+						= f.check_box :summer
+						= f.label :summer, 'Available for Summer'
+				%fieldset
+						= f.check_box :utilities
+						= f.label :utilities, "Included utilities"
+				%fieldset
+						= f.check_box :parking
+						= f.label :parking, 'Parking included?'
 
-    .card
-        %h4 Property Photos
-        %fieldset.photo
-            = f.fields_for :photos do |photo_form|
-                - if not photo_form.object.new_record?
-                    %fieldset.delete
-                        %a.delete_photo{:href => "#", :class => 'btn warning'} remove photo
-                        = photo_form.hidden_field :_destroy, :value => 0
-                    %fieldset
-                        = image_tag photo_form.object.photo.url(:medium)
+		.card
+				%h4 Property Photos
+				%fieldset.photo
+						= f.fields_for :photos do |photo_form|
+								- if not photo_form.object.new_record?
+										%fieldset
+												= image_tag photo_form.object.photo.url(:medium)
+								- else
+										= photo_form.file_field :photo
+								%fieldset.options
+										= photo_form.check_box :main, :class => "featured"
+										= photo_form.label :main, "Feature this photo"
+										%a.delete_photo{:href => "#", :class => 'btn warning'} remove photo
+										= photo_form.hidden_field :_destroy, :value => 0
+				= add_photo_link('+ Add New Photo')
 
-                %fieldset 
-                    = photo_form.radio_button :main, :class => "featured"
-                    = photo_form.label :main, "Feature this photo"
-                    = photo_form.file_field :photo, :class => 'btn'
+		= hidden_field_tag :stripeToken 
+		= hidden_field_tag :user_email, current_user.email
 
-        = add_photo_link('+ Add New Photo')
-
-    = hidden_field_tag :stripeToken 
-    = hidden_field_tag :user_email, current_user.email
-
-    .actions
-        - if @property.new_record?
-            = f.submit 'Purchase Listing ($50.00)', id: 'propertyCreateSubmit'
-        - else
-            = f.submit 'Update Listing', id: 'propertyUpdateSubmit'
+		.actions
+				- if @property.new_record?
+						= f.submit 'Purchase Listing ($50.00)', id: 'propertyCreateSubmit', :class=>"btn main_action"
+				- else
+						= f.submit 'Update Listing', id: 'propertyUpdateSubmit', :class=>"btn main_action"
+						= link_to 'Cancel', @property, :class => "btn"

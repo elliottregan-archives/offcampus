@@ -1,7 +1,7 @@
-= link_to 'Back to all listings', '/list', :class => "btn"
-= link_to 'Edit Listing', edit_property_path(@property), :class => "btn"
+= link_to 'Edit Listing', edit_property_path(@property), :class => "edit_btn on_white"
 
 %section
+  = link_to 'All listings/', '/list', :class => "breadcrumb"
   %h3.property-title= @property.address
 
 %section
@@ -10,15 +10,16 @@
       - @property.photos.each do |photo|
         .image_wrapper
           %a.expandable_image{:href => "#"}
-            = image_tag photo.photo.url(:medium), width: 200
-%section
-  .description
-    %p
-      = @property.description.gsub("\n", "</p><p>").html_safe
+            = image_tag photo.photo.url(:medium), :class => "thumb"
 
-%section
-  %dl.show
-    %h4 Contact info
+%section.description
+  %h4.detail_title Description
+  %p
+    = @property.description.gsub("\n", "</p><p>").html_safe
+
+%section.detail_list
+  %h4.detail_title Contact info
+  %dl
     - if @property.landlord.name
       %dt Owner:
       %dd= @property.landlord.name
@@ -30,9 +31,9 @@
       %dt Phone:
       %dd= @property.landlord.phone
 
-%section
-  %dl.show
-    %h4 Rent Details
+%section.detail_list
+  %h4.detail_title Rent Details
+  %dl
     - if @property.price
       %dt Rent:
       %dd
@@ -43,9 +44,9 @@
       %dt Available over the Summer:
       %dd= @property.summer ? 'Yes' : 'No'
 
-%section
-  %dl.show
-    %h4 Property Info
+%section.detail_list
+  %h4.detail_title Property Info
+  %dl
     
     %dt Bedrooms:
     %dd= @property.bedrooms

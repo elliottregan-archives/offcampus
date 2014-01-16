@@ -4,9 +4,22 @@
 }
 
 .photos {
+  background-color: whitesmoke;
+  border: 1px solid darken(whitesmoke, 10%);
+  padding: 10px;
   .image_wrapper {
-    width: 200px;
-    display: inline-block;
+	display: inline-block;
+	vertical-align: top;
+	
+	img.thumb {
+		width: 200px;
+
+		@media #{$mobile-break} {
+
+			width: 100px;
+
+		}
+	}
   }
 }
 
@@ -21,15 +34,28 @@
   height: 200px;
 }
 
-section > dt, section > dd {
-  line-height: 1.5em;
+.detail_title {
+	font-size: 1.2em;
+	text-transform: uppercase;
+	color: $logo-blue;
 }
 
-section > dt {  
-  width: 200px;
-  float: left;
+.detail_list {
+	 margin: 2em 0;
+	 border-top: 1px solid #ccc;
+
+	 dt { 
+	 	font-weight: bold;
+	 	margin-top: 1rem;
+	 }
+
+	 dd {
+	 }
+
 }
 
-section > dd {
-  margin-left: 200px;
+.on_white {
+	@extend .edit_btn;
+	border-color: #aaa;
+	
 }

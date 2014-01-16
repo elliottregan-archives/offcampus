@@ -3,6 +3,11 @@ $input-text: darken(#d3d3d3, 50%);
 
 fieldset, section {
   padding: .5em 0;
+
+  &:first-of-type {
+    padding-top: 0;
+  }
+
 }
 
 .inline {
