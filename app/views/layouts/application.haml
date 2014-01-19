@@ -14,24 +14,23 @@
     %link{:href => "http://fonts.googleapis.com/css?family=Bree+Serif", :rel => "stylesheet", :type => "text/css"}
     %script{:src => "http://maps.googleapis.com/maps/api/js?key=AIzaSyB6H6ENo1Vugdb0LPW_xS1Ef3DlQvjBemY&sensor=true", :type => "text/javascript"}
   %body
-    %header.site_header
-      .container
-        %h1 
-          %a{:href => "/"} Geneseo Off-Campus
-        - if @tagline
-          %h2
-            %a{:href => "/"} The best place to find off-campus housing.
-        .login_links
-          - if user_signed_in?
-            Logged in as: 
-            =current_user.landlord.name 
-            =link_to('Logout', destroy_user_session_path, :method => :delete) |
-            =link_to('Your Listings', { :controller => 'landlords', :action => 'dashboard' })
-          - else
-            Landlords:
-            = link_to('Login', new_user_session_path)
-            |
-            =link_to('Sign up', new_user_registration_path)
+    %div
+      %nav.top-bar
+        %ul.title-area
+          %li.name
+            %h1 
+              %a Geneseo Off-campus
+        .top-bar-section
+          .right
+            - if user_signed_in?
+              =current_user.landlord.name 
+              =link_to('Logout', destroy_user_session_path, :method => :delete) |
+              =link_to('Your Listings', { :controller => 'landlords', :action => 'dashboard' })
+            - else
+              Landlords:
+              = link_to('Login', new_user_session_path)
+              |
+              =link_to('Sign up', new_user_registration_path)
     #overlays
       - if notice != nil
         .notice
@@ -41,6 +40,6 @@
         .notice.alert
           = alert
           %button.close —
-    .container{:class => (@tagline ? "nobackground" : "background")}
+    %main.row{:class => (@tagline ? "nobackground" : "background")}
       = yield
     %footer

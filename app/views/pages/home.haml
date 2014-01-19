@@ -1,16 +1,21 @@
-%section.row
-  %a.students.eight.columns{:href => '/list'}
+%header.site_header
+  %h1.header_logo
+    %a{:href => "/"} Geneseo Off-Campus
+  %h2.tagline.large-12
+    %a{:href => "/"} The best place to find off-campus housing.
+%section
+  %a.students.medium-6.columns{:href => '/list'}
     .homepage_link
-      %p Students: 
-      %p View All Listings
-  %a.landlords.eight.columns{:href => '/landing'}
+      %div Students: 
+      %div View All Listings
+  %a.landlords.medium-6.columns{:href => '/landing'}
     .homepage_link
-      %p Landlords:
-      %p Add Your Property
-%section.row
+      %div Landlords:
+      %div Add Your Property
+%section.small-12.columns
   #big_map.homepage_map
 
-%section.featured.row
+%section.featured.small-12.columns
   - @featured.each do |property|
 
     %a.property{:href => 'properties/' + property.id.to_s }

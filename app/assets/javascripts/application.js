@@ -24,6 +24,4 @@ $(document).ready(function() {
   	$('.bedroom_filter').toggleClass("visible");
   });
 
-  $($.doge);
-
 });

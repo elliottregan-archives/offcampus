@@ -1,5 +1,5 @@
 - properties.each_with_index do |property, index|
-  %li.one-third.column
+  %li
     .post
       .photo_container
         - if user_signed_in? and property.landlord_id == @user.landlord.id
@@ -12,7 +12,7 @@
       .info
         .address
           %a{:href => "/properties/" + property.id.to_s}
-            %h4= property.address
+            = property.address
         %dl
           %dt Bedrooms:
           %dd= property.bedrooms

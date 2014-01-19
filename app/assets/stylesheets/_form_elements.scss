@@ -32,6 +32,11 @@ input:not([type=submit]):not([type=file]):not([type=checkbox]), textarea {
   border: 1px solid darken($input-background, 20%);
 }
 
+.currency_input {
+  margin-left: 1em;
+
+}
+
 textarea {
   min-height: 200px;
 }

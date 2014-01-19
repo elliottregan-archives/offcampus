@@ -1,56 +1,39 @@
 .property-title {
-  font-weight: bold;
-  font-size: 2em;
+	font-weight: bold;
 }
 
 .photos {
-  background-color: whitesmoke;
-  border: 1px solid darken(whitesmoke, 10%);
-  padding: 10px;
-  .image_wrapper {
+
+	.image_wrapper {
 	display: inline-block;
 	vertical-align: top;
 	
 	img.thumb {
-		width: 200px;
 
-		@media #{$mobile-break} {
 
-			width: 100px;
-
-		}
 	}
-  }
-}
-
-.description p {
-  margin-bottom: 15px;
-  line-height: 1.4em;
+	}
 }
 
 .post a.image {
-  display: block;
-  overflow: hidden;
-  height: 200px;
+	display: block;
+	overflow: hidden;
+	height: 200px;
 }
 
 .detail_title {
-	font-size: 1.2em;
 	text-transform: uppercase;
-	color: $logo-blue;
 }
 
 .detail_list {
-	 margin: 2em 0;
-	 border-top: 1px solid #ccc;
+	dt { 
+		font-weight: bold;
+		margin-top: 1rem;
+	}
 
-	 dt { 
-	 	font-weight: bold;
-	 	margin-top: 1rem;
-	 }
-
-	 dd {
-	 }
+	dd {
+	
+	}
 
 }
 

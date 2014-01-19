@@ -1,61 +1,66 @@
 = link_to 'Edit Listing', edit_property_path(@property), :class => "edit_btn on_white"
 
-%section
+%section.small-12.columns
   = link_to 'All listings/', '/list', :class => "breadcrumb"
-  %h3.property-title= @property.address
+  %h2 View Property
 
-%section
-  .photos
-    - if @property.has_photo?
-      - @property.photos.each do |photo|
-        .image_wrapper
-          %a.expandable_image{:href => "#"}
-            = image_tag photo.photo.url(:medium), :class => "thumb"
-
-%section.description
-  %h4.detail_title Description
-  %p
-    = @property.description.gsub("\n", "</p><p>").html_safe
-
-%section.detail_list
-  %h4.detail_title Contact info
+%section.medium-12.columns
+  %h3 Basic Info
   %dl
-    - if @property.landlord.name
+    %dt Address
+    %dd= @property.address
+
+    %dt Description
+    %dd= @property.description.gsub("\n", "</p><p>").html_safe
+
+    .row
+      .medium-6.large-3.columns  
+        %dt Bedrooms:
+        %dd= @property.bedrooms
+      .medium-6.columns
+        %dt Rent:
+        %dd
+          = '$' + @property.price.to_s
+          per 
+          =@property.unit
+
+%section.small-12.columns
+  %h3 Contact info
+  %dl.row
+    .medium-6.large-3.columns   
       %dt Owner:
       %dd= @property.landlord.name
-    - if @property.landlord.hide_email == false
+    .medium-6.large-3.columns
       %dt Email:
-      %dd
-        %a{:href => "mailto:#{@property.landlord.user.email}"}= @property.landlord.user.email
-    - if @property.landlord.phone
+      - if @property.landlord.hide_email == false
+        %dd
+          %a{:href => "mailto:#{@property.landlord.user.email}"}= @property.landlord.user.email
+    .medium-6.columns
       %dt Phone:
-      %dd= @property.landlord.phone
+      - if @property.landlord.phone
+        %dd= @property.landlord.phone
 
-%section.detail_list
-  %h4.detail_title Rent Details
-  %dl
-    - if @property.price
-      %dt Rent:
-      %dd
-        = '$' + @property.price.to_s
-        per 
-        =@property.unit
-    - if @property.summer
-      %dt Available over the Summer:
+%section.small-12.columns
+  %h3 Additional Info
+  %dl.row
+    .medium-6.large-3.columns
+      %dt Summer Rental:
       %dd= @property.summer ? 'Yes' : 'No'
-
-%section.detail_list
-  %h4.detail_title Property Info
-  %dl
-    
-    %dt Bedrooms:
-    %dd= @property.bedrooms
-    
-    %dt Parking:
-    %dd= @property.parking ? 'Yes' : 'No'
-    
-    %dt Laundry:
-    %dd= @property.laundry ? 'included' : 'not included'
-    - if @property.utilities != ''
+    .medium-6.large-3.columns
+      %dt Parking:
+      %dd= @property.parking ? 'Yes' : 'No'
+    .medium-6.large-3.columns
+      %dt Laundry:
+      %dd= @property.laundry ? 'included' : 'not included'
+    .medium-6.large-3.columns
       %dt Utilities:
-      %dd= @property.utilities
+      - if @property.utilities != ''
+        %dd= @property.utilities
+%section.small-12.columns
+  %h3 Photos
+  - if @property.has_photo?
+    %ul.photos.small-block-grid-2.medium-block-grid-3.large-block-grid-4
+      - @property.photos.each do |photo|
+        %li.image_wrapper
+          %a.expandable_image{:href => "#"}
+            = image_tag photo.photo.url(:medium), :class => "thumb"
