@@ -17,9 +17,9 @@ class PagesController < ApplicationController
 			@bedrooms = true if @bedrooms.to_i >= 6
 		end
 
-    	if user_signed_in?
-      		@user = User.find(current_user)
-    	end
+    		if user_signed_in?
+      			@user = User.find(current_user)
+    		end
 
 		if(params[:low_price] and params[:high_price] and params[:bedrooms])
 			if params[:bedrooms].to_i == 6

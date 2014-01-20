@@ -1,4 +1,5 @@
-= link_to 'Edit Listing', edit_property_path(@property), :class => "edit_btn on_white"
+- if user_signed_in?
+  = link_to 'Edit Listing', edit_property_path(@property), :class => "edit_btn on_white"
 
 %section.small-12.columns
   = link_to 'All listings/', '/list', :class => "breadcrumb"
