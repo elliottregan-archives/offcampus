@@ -25,7 +25,7 @@
 				.row.collapse
 					= f.label :price, 'Price'
 					.small-1.medium-2.columns
-						.prefix $
+						%span.prefix $
 					.small-11.medium-10.columns
 						= f.number_field :price, class: "small-9 columns", min: 0, step: 100
 			.medium-4.columns
