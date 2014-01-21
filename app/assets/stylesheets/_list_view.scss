@@ -114,21 +114,22 @@
 }
 
 .sliderbar {
-  margin-right: 8em;
+  margin-right: 240px;
+  margin-left: 70px;
 }
 
 .slider_readout {
-  float: right;
-
   .dollar_sign {
     vertical-align: top;
     display: inline-block;
   }
 
-  input.dollar_amount {
-    width: 5em;
-    display: inline-block !important;
-    margin-top: -8px;
-    line-height: 16px;
+  #price_slider_max {
+    float: right;
+    margin-right: 150px;
+  }
+
+  #price_slider_min {
+    float: left;
   }
 }

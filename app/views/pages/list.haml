@@ -53,11 +53,15 @@
               %span.subtext  (#{@counts[6] || 0} available)
       #sort_categories
         %h3.filter_category Price Range
-        
+
         .slider_readout
-          %span.dollar_sign $
-          %input.dollar_amount#price_slider_readout.slider{:type => 'number'}
+          %span.dollar_amount#price_slider_min
+
+        .slider_readout
+          %span.dollar_amount#price_slider_max
+
         #price_slider.sliderbar
+
 
       %section.listing
         - if @properties.length == 0

@@ -28,27 +28,36 @@ $(document).ready(function() {
 		$(this).attr('checked', 'checked');
 	});
 
-	function writeDollar ( ammount ) {
-		$("#price_slider_readout").text( '$' + ammount );
+	function writeDollarMin ( amount ) {
+		$("#price_slider_min").text( '$' + amount );
+	}
+
+	function writeDollarMax ( amount ) {
+		$("#price_slider_max").text( '$' + amount );
 	}
 
 	if($("#price_slider").length > 0) {
 		$("#price_slider").noUiSlider( {
-			range: [0,<%= @highest_price %>],
-			start: <%= @highest_price %>,
+			range: [0, <%= @highest_price %>],
+			start: [0, <%= @highest_price %>],
+			connect: true,
 			step: 100,
-			handles: 1,
 			serialization: {
-				to: [$("#price_slider_readout")]
+				to: [
+					[$("#price_slider_min"), writeDollarMin],
+					[$("#price_slider_max"), writeDollarMax]
+				]
 			},
 			behaviour: "extend-tap"
 		}).change( function() {
-			var price = $("#price_slider").val();
+			var min_price = $("#price_slider_min").val();
+			var max_price = $("#price_slider_max").val();
 			var bedrooms = $("#size_categories .active a:last").attr('rel');
+
 			$.get("/list", {
 				layout: false,
-				low_price: 0,
-				high_price: price,
+				low_price: min_price,
+				high_price: max_price,
 				bedrooms: bedrooms
 			}, function(data) {
 				$("section.listing").empty().html(data);
