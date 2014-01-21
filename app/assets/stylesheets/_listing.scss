@@ -1,44 +1,119 @@
-.property-title {
-	font-weight: bold;
+body {
+	background: url(blur.jpg) no-repeat center center fixed;
+	@include background-size(cover);
 }
 
-.photos {
 
-	.image_wrapper {
-	display: inline-block;
-	vertical-align: top;
+$card-padding: 1.5rem;
+
+.card {
+	margin: 1em 0;
+	background-color: whitesmoke;
+	border: 1px solid #ccc;
+
+	.card-title {
+		margin: 0;
+		text-align: center;
+		text-transform: uppercase;
+		padding: $card-padding;
+		font-size: 1.5rem;
+	}
+
+	.card-body {
+		padding: $card-padding;
+
+	}
+}
+
+.data-card {
+	@extend .card;
+
+	dl {
+		background-color: white;
+		margin: 0;
+		dt,dd {
+			padding-left: $card-padding;
+			padding-right: $card-padding;
+			margin: 0;
+		}
+		dt {
+			padding-top: $card-padding;
+			border-top: 1px solid #ccc;
+		}
+		dd {
+			padding-bottom: $card-padding;
+		}
+	}
+}
+
+.property-card {
+	@extend .data-card;
+	background-color: whitesmoke;
+	border: none;
 	
-	img.thumb {
-
-
-	}
-	}
-}
-
-.post a.image {
-	display: block;
-	overflow: hidden;
-	height: 200px;
-}
-
-.detail_title {
-	text-transform: uppercase;
-}
-
-.detail_list {
-	dt { 
-		font-weight: bold;
-		margin-top: 1rem;
+	.card-title {
+		text-align: center;
+		padding: 1em;
+		a {
+			color: lighten(black, 20%);
+		}
 	}
 
-	dd {
-	
+	.card-body {
+		padding: 0;
+		border: 1px solid darkness(#fff, 20%);
 	}
 
-}
+	.photo_container {
+	  height: 200px;
+	  position: relative;
+	  background-color: lightgrey;
+	  overflow: hidden;
+	  border-bottom: none;
+	}
 
-.on_white {
-	@extend .edit_btn;
-	border-color: #aaa;
-	
+	.property_filler_img {
+	  background-image: url(picture.svg);
+	  background-repeat: no-repeat;
+	  background-size: 50%;
+	  width: 100%;
+	  height: 100%;
+	  background-position: center center;
+	}
+
+	.property_photo {
+	  width: 100%;
+	}
+
+	.edit_btn {
+	  right: 0;
+	  position: absolute;
+	  padding: 6px 8px;
+	  margin: 4px;
+	  border: 1px solid rgb(255, 255, 255);
+	  border-radius: 4px;
+	  z-index: 100;
+	  background-color: whitesmoke;
+	  opacity: .65;
+
+	  &:hover {
+	    background-image: -webkit-gradient(linear, left bottom, left top, from(rgb(247, 247, 247)), to(rgb(255, 255, 255)));
+	    background-image: -moz-linear-gradient(90deg, rgb(247, 247, 247) 0%, rgb(255, 255, 255) 100%);
+	  }
+	  &:after  {
+	    content: '\A';
+	    height: 16px;
+	    width: 16px;
+	    position: relative;
+	    right: -6px;
+	    top: 3px;
+	    display: inline-block;
+	    background-image: url(ic_edit.png);
+	  }
+
+	}
+
+	&:hover .edit_btn {
+	  opacity: 1;
+	}
 }

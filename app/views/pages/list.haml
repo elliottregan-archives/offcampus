@@ -8,59 +8,59 @@
       %ul.medium-block-grid-2.small-block-grid-1.large-block-grid-3
         = render :partial => 'list', :locals => { :properties => @properties }
     - else
-      #size_categories
-        %h3.filter_category Number of bedrooms:
-        #bedroom_filter_readout.toggle_filter_button.toggle_bedroom_filter.filter_button pick an option
-        %ul.filter_bar.bedroom_filter
-          %li.filter_button.one{:class => (@bedrooms == false ? 'active' : '') }
-            %a.toggle_bedroom_filter{:href => "#", :rel =>  "-1"}
-              Any 
-              %span.subtext (#{@all.length} available)
+      .card
+        .card-body
+          #size_categories
+            %h3.filter_category Number of bedrooms:
+            #bedroom_filter_readout.toggle_filter_button.toggle_bedroom_filter.filter_button pick an option
+            %ul.filter_bar.bedroom_filter
+              %li.filter_button.one{:class => (@bedrooms == false ? 'active' : '') }
+                %a.toggle_bedroom_filter{:href => "#", :rel =>  "-1"}
+                  Any 
+                  %span.subtext (#{@all.length} available)
 
-          %li.filter_button{:class => (@bedrooms == 0 ? 'active' : '')}
-            %a.toggle_bedroom_filter{:href => "#", :rel => "0"} 
-              Studio
-              %span.subtext (#{@counts[0] || 0} available)
+              %li.filter_button{:class => (@bedrooms == 0 ? 'active' : '')}
+                %a.toggle_bedroom_filter{:href => "#", :rel => "0"} 
+                  Studio
+                  %span.subtext (#{@counts[0] || 0} available)
+              
+              %li.filter_button{:class => (@bedrooms == 1 ? 'active' : '')}
+                %a.toggle_bedroom_filter{:href => "#", :rel => "1"} 
+                  1 
+                  %span.subtext (#{@counts[1] || 0} available)
+              
+              %li.filter_button{:class => (@bedrooms == 2 ? 'active' : '')}
+                %a.toggle_bedroom_filter{:href => "#", :rel => "2"} 
+                  2 
+                  %span.subtext (#{@counts[2] || 0} available)
+              
+              %li.filter_button{:class => (@bedrooms == 3 ? 'active' : '')}
+                %a.toggle_bedroom_filter{:href => "#", :rel => "3"} 
+                  3 
+                  %span.subtext (#{@counts[3] || 0} available)
+              
+              %li.filter_button{:class => (@bedrooms == 4 ? 'active' : '')}
+                %a.toggle_bedroom_filter{:href => "#", :rel => "4"} 
+                  4 
+                  %span.subtext (#{@counts[4] || 0} available)
+              
+              %li.filter_button{:class => (@bedrooms == 5 ? 'active' : '')}
+                %a.toggle_bedroom_filter{:href => "#", :rel => "5"} 
+                  5 
+                  %span.subtext (#{@counts[5] || 0} available)
+              
+              %li.filter_button{:class => (@bedrooms == true ? 'active' : '')}
+                %a.toggle_bedroom_filter{:href => "#", :rel => "6"} 
+                  6+
+                  %span.subtext  (#{@counts[6] || 0} available)
           
-          %li.filter_button{:class => (@bedrooms == 1 ? 'active' : '')}
-            %a.toggle_bedroom_filter{:href => "#", :rel => "1"} 
-              1 
-              %span.subtext (#{@counts[1] || 0} available)
-          
-          %li.filter_button{:class => (@bedrooms == 2 ? 'active' : '')}
-            %a.toggle_bedroom_filter{:href => "#", :rel => "2"} 
-              2 
-              %span.subtext (#{@counts[2] || 0} available)
-          
-          %li.filter_button{:class => (@bedrooms == 3 ? 'active' : '')}
-            %a.toggle_bedroom_filter{:href => "#", :rel => "3"} 
-              3 
-              %span.subtext (#{@counts[3] || 0} available)
-          
-          %li.filter_button{:class => (@bedrooms == 4 ? 'active' : '')}
-            %a.toggle_bedroom_filter{:href => "#", :rel => "4"} 
-              4 
-              %span.subtext (#{@counts[4] || 0} available)
-          
-          %li.filter_button{:class => (@bedrooms == 5 ? 'active' : '')}
-            %a.toggle_bedroom_filter{:href => "#", :rel => "5"} 
-              5 
-              %span.subtext (#{@counts[5] || 0} available)
-          
-          %li.filter_button{:class => (@bedrooms == true ? 'active' : '')}
-            %a.toggle_bedroom_filter{:href => "#", :rel => "6"} 
-              6+
-              %span.subtext  (#{@counts[6] || 0} available)
-      #sort_categories
-        %h3.filter_category Price Range
-
-        .slider_readout
-          %span.dollar_amount#price_slider_min
-
-        .slider_readout
-          %span.dollar_amount#price_slider_max
-
-        #price_slider.sliderbar
+          #sort_categories
+            %h3.filter_category Price Range
+            .slider_readout
+              %span.dollar_amount#price_slider_min
+            .slider_readout
+              %span.dollar_amount#price_slider_max
+            #price_slider.sliderbar
 
 
       %section.listing

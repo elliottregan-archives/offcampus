@@ -1,6 +1,6 @@
 - properties.each_with_index do |property, index|
   %li
-    .post
+    .property-card
       .photo_container
         - if user_signed_in? and property.landlord_id == @user.landlord.id
           = link_to 'edit info', edit_property_url(property), :class => 'edit_btn'
@@ -9,8 +9,8 @@
             = image_tag property.featured_photo.photo.url(:medium), :class => 'property_photo'
           - else
             .property_filler_img
-      .info
-        .address
+      .info.card-body
+        %h3.card-title
           %a{:href => "/properties/" + property.id.to_s}
             = property.address
         %dl
