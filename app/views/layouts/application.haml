@@ -40,6 +40,6 @@
         .notice.alert
           = alert
           %button.close —
-    %main.row{:class => (@tagline ? "nobackground" : "background")}
+    %main{:class => (@tagline ? "nobackground" : "background")}
       = yield
     %footer

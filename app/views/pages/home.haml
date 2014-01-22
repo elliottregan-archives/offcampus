@@ -1,9 +1,9 @@
-%header.site_header
+%header.site_header.row
   %h1.header_logo
     %a{:href => "/"} Geneseo Off-Campus
   %h2.tagline.large-12
     %a{:href => "/"} The best place to find off-campus housing.
-%section
+%section.row
   %a.students.medium-6.columns{:href => '/list'}
     .homepage_link
       %div Students: 
@@ -12,13 +12,13 @@
     .homepage_link
       %div Landlords:
       %div Add Your Property
-%section.small-12.columns
-  #big_map.homepage_map
+%section.row
+  #big_map.homepage_map.small-12.columns
 
-%section.featured.small-12.columns
+%section.featured.row
   - @featured.each do |property|
 
-    %a.property{:href => 'properties/' + property.id.to_s }
+    %a.medium-4.columns.property{:href => 'properties/' + property.id.to_s }
       .photo
         - if property.has_photo?
           = image_tag property.featured_photo.photo.url(:thumb)
@@ -35,6 +35,6 @@
           = "$" + property.price.round.to_s
           per 
           = property.unit 
-
+.row
   .full_width
     = link_to 'Landlords, get your properties featured right here on the homepage!', { :action => 'landing' }, { :class => 'homepage_link' }

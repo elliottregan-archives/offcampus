@@ -1,6 +1,26 @@
 body {
-	background: url(blur.jpg) no-repeat center center fixed;
-	@include background-size(cover);
+	//background: url(blur.jpg) no-repeat center center fixed;
+	//@include background-size(cover);
+	background-color: white;
+}
+
+$secondary_top-bar-color: whitesmoke;
+
+.secondary_contain-to-grid {
+	@extend .contain-to-grid;
+	background-color: $secondary_top-bar-color;
+	margin-bottom: 1em;
+}
+
+.secondary_top-bar {
+	@extend .top-bar;
+	height: auto;
+	background-color: $secondary_top-bar-color;
+
+	> * {
+		padding: 1em;
+	}
+
 }
 
 
@@ -17,6 +37,7 @@ $card-padding: 1.5rem;
 		text-transform: uppercase;
 		padding: $card-padding;
 		font-size: 1.5rem;
+		font-family: $header-font-family;
 	}
 
 	.card-body {
@@ -47,21 +68,59 @@ $card-padding: 1.5rem;
 }
 
 .property-card {
-	@extend .data-card;
 	background-color: whitesmoke;
-	border: none;
-	
+	$card-border-radius: 6px;
+	@include border-radius($card-border-radius);
+
 	.card-title {
 		text-align: center;
-		padding: 1em;
+		padding-top: .5em;
+		margin: 0;
+		font-size: 1.1em;
 		a {
-			color: lighten(black, 20%);
+			color: #50535d;
 		}
 	}
 
 	.card-body {
-		padding: 0;
-		border: 1px solid darkness(#fff, 20%);
+		background-color: white;
+		border: 1px solid #74bade;
+		border-top-width: 4px;
+		@include border-radius(0 0 $card-border-radius $card-border-radius);
+	
+		:last-child {
+			@include border-radius(0 0 $card-border-radius $card-border-radius);
+
+		}
+
+	}
+	.property-price {
+		color: #fa7455;
+		font-size: 1.4em;
+		font-weight: bold;
+		text-align: center;
+		padding-bottom: .5em;
+		font-family: $header-font-family;
+	}
+
+	.unit {
+		color: #50535d;
+		font-size: .6em;
+		font-weight: 400;
+	}
+
+	.meta-data {
+		display: table;
+		background-color: whitesmoke;
+		border-top: 1px solid darken(whitesmoke, 10%);
+		padding: .5em 0;
+		width: 100%;
+		font-size: .9em;
+		> * {
+			display: table-cell;
+			text-align: center;
+			border-right: 1px solid darken(whitesmoke, 10%);
+		}
 	}
 
 	.photo_container {
@@ -70,6 +129,12 @@ $card-padding: 1.5rem;
 	  background-color: lightgrey;
 	  overflow: hidden;
 	  border-bottom: none;
+		@include border-radius($card-border-radius $card-border-radius 0 0);
+	
+		.property_photo {
+		  min-height: 200px;
+		  width: 100%;
+		}
 	}
 
 	.property_filler_img {
@@ -79,10 +144,6 @@ $card-padding: 1.5rem;
 	  width: 100%;
 	  height: 100%;
 	  background-position: center center;
-	}
-
-	.property_photo {
-	  width: 100%;
 	}
 
 	.edit_btn {

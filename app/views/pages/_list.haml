@@ -13,10 +13,27 @@
         %h3.card-title
           %a{:href => "/properties/" + property.id.to_s}
             = property.address
-        %dl
-          %dt Bedrooms:
-          %dd= property.bedrooms
-          %dt Rent:
-          %dd
-            $#{property.price}
-            %span.pay_period= 'per ' + property.unit
+        .property-price
+          $#{property.price}
+          %span.unit= '/' + property.unit
+
+        .meta-data
+          .cell
+            #{property.bedrooms}
+            - if property.bedrooms <= 1
+              %span bed
+            - else
+              %span beds
+          .cell
+            -if property.laundry
+              laundry
+            -else
+              no laundry
+          .cell
+            -if property.parking
+              parking
+            -else
+              no parking
+
+
+

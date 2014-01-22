@@ -7,73 +7,75 @@
 			%ul
 				- @property.errors.full_messages.each do |msg|
 					%div= msg
-	.medium-8.columns
-		.card
-			%h3.card-title Basic Info
-			.card-body	
-				.row
-					.medium-12.columns
-						= f.label :address
-						= f.text_field :address
-				.row
-					.medium-12.columns
-						= f.label :description
-						= f.text_area :description
-				.row
-					.medium-4.columns
-						= f.label :bedrooms, 'Number of Bedrooms'
-						= f.text_field :bedrooms, :class => ''
-					.medium-4.columns
-						.row.collapse
-							= f.label :price, 'Price'
-							.small-1.medium-2.columns
-								%span.prefix $
-							.small-11.medium-10.columns
-								= f.number_field :price, class: "small-9 columns", min: 0, step: 100
-					.medium-4.columns
-						= f.label :unit, 'billed per'
-						= f.select :unit, options_for_select([['Semester', 'semester'], ['Month', 'month'], ['Year', 'year']])
-		.card
-			%h3.card-title Additional Info
-			.card-body
-				%div
-					= f.check_box :laundry
-					= f.label :laundry, 'Laundry Included'
-				%div
-					= f.check_box :summer
-					= f.label :summer, 'Available for Summer'
-				%div
-					= f.check_box :utilities
-					= f.label :utilities, "Included utilities"
-				%div
-					= f.check_box :parking
-					= f.label :parking, 'Parking included?'
+	.row
+		.medium-6.columns
+			.card
+				%h3.card-title Basic Info
+				.card-body	
+					.row
+						.medium-12.columns
+							= f.label :address
+							= f.text_field :address
+					.row
+						.medium-12.columns
+							= f.label :description
+							= f.text_area :description
+					.row
+						.medium-4.columns
+							= f.label :bedrooms, 'Number of Bedrooms'
+							= f.text_field :bedrooms, :class => ''
+						.medium-4.columns
+							.row.collapse
+								= f.label :price, 'Price'
+								.small-1.medium-2.columns
+									%span.prefix $
+								.small-11.medium-10.columns
+									= f.number_field :price, class: "small-9 columns", min: 0, step: 100
+						.medium-4.columns
+							= f.label :unit, 'billed per'
+							= f.select :unit, options_for_select([['Semester', 'semester'], ['Month', 'month'], ['Year', 'year']])
+			.card
+				%h3.card-title Additional Info
+				.card-body
+					%div
+						= f.check_box :laundry
+						= f.label :laundry, 'Laundry Included'
+					%div
+						= f.check_box :summer
+						= f.label :summer, 'Available for Summer'
+					%div
+						= f.check_box :utilities
+						= f.label :utilities, "Included utilities"
+					%div
+						= f.check_box :parking
+						= f.label :parking, 'Parking included?'
 
-	.small-12.columns
-		.card
-			%h3.card-title Property Photos
-			.card-body
-				%ul.photos.small-block-grid-2.medium-block-grid-3.large-block-grid-4
-					= f.fields_for :photos do |photo_form|
-						%li
-							- if not photo_form.object.new_record?
-								.th
-									= image_tag photo_form.object.photo.url(:medium)
-							- else
-								= photo_form.file_field :photo
-								%button.button.small + Add New Photo'
-							.options
-								= photo_form.check_box :main, :class => "featured"
-								= photo_form.label :main, "Feature this photo"
-								%a.delete_photo{:href => "#", :class => 'button tiny warning'} remove photo
-								= photo_form.hidden_field :_destroy, :value => 0
+		.medium-6.columns
+			.card
+				%h3.card-title Property Photos
+				.card-body
+					%ul.photos.small-block-grid-2.medium-block-grid-2.large-block-grid-3
+						= f.fields_for :photos do |photo_form|
+							%li
+								- if not photo_form.object.new_record?
+									.th
+										= image_tag photo_form.object.photo.url(:medium)
+								- else
+									= photo_form.file_field :photo
+									%button.button.small + Add New Photo'
+								.options
+									= photo_form.check_box :main, :class => "featured"
+									= photo_form.label :main, "Feature this photo"
+									%a.delete_photo{:href => "#", :class => 'button tiny warning'} remove photo
+									= photo_form.hidden_field :_destroy, :value => 0
 
 	= hidden_field_tag :stripeToken 
 	= hidden_field_tag :user_email, current_user.email
 
-	.medium-12.columns
-		- if @property.new_record?
-			= f.submit 'Purchase Listing ($50.00)', id: 'propertyCreateSubmit', :class=>"button main_action"
-		- else
-			= f.submit 'Update Listing', id: 'propertyUpdateSubmit', :class=>"button main_action"
-			= link_to 'Cancel', @property, :class => "button secondary"
+	.row
+		.small-12.columns
+			- if @property.new_record?
+				= f.submit 'Purchase Listing ($50.00)', id: 'propertyCreateSubmit', :class=>"button main_action"
+			- else
+				= f.submit 'Update Listing', id: 'propertyUpdateSubmit', :class=>"button main_action"
+				= link_to 'Cancel', @property, :class => "button secondary"

@@ -1,58 +1,65 @@
-%section.small-12.columns
-  %ul.breadcrumbs
-    %li= link_to 'All listings', '/list'
-    %li.current View Property
-    - if user_signed_in?
-      = link_to 'Edit Listing', edit_property_path(@property), :class => "edit_btn right"
+%section.row
+  .small-12.columns
+    %ul.breadcrumbs
+      %li= link_to 'All listings', '/list'
+      %li.current View Property
+      - if user_signed_in?
+        = link_to 'Edit Listing', edit_property_path(@property), :class => "edit_btn right"
 
-%section.medium-6.columns
-  .data-card
-    %h3.card-title Basic Info
-    %dl
-      %dt Address
-      %dd= @property.address
+%section.row
+  .medium-6.columns
+    .data-card
+      %h3.card-title Basic Info
+      %dl
+        %dt Address
+        %dd= @property.address
 
-      %dt Description
-      %dd= @property.description.gsub("\n", "</p><p>").html_safe
+        %dt Description
+        %dd= @property.description.gsub("\n", "</p><p>").html_safe
 
-      %dt Bedrooms:
-      %dd= @property.bedrooms
+        %dt Bedrooms:
+        %dd= @property.bedrooms
 
-      %dt Rent:
-      %dd
-        = '$' + @property.price.to_s
-        per 
-        =@property.unit
-  .data-card
-    %h3.card-title Additional Info
-    %dl
-      %dt Summer Rental:
-      %dd= @property.summer ? 'Yes' : 'No'
-      %dt Parking:
-      %dd= @property.parking ? 'Yes' : 'No'
-      %dt Laundry:
-      %dd= @property.laundry ? 'included' : 'not included'
-      %dt Utilities:
-      - if @property.utilities != ''
-        %dd= @property.utilities
-%section.medium-6.columns
-  .card
-    %h3.card-title Photos
-    - if @property.has_photo?
-      %ul.card-body.medium-block-grid-2.large-block-grid-3
-        - @property.photos.each do |photo|
-          %li
-            %a.expandable_image.th{:href => photo.photo.url(:large)}
-              = image_tag photo.photo.url(:thumb)
-  .data-card
-    %h3.card-title Contact
-    %dl
-      %dt Owner:
-      %dd= @property.landlord.name
-      %dt Email:
-      - if @property.landlord.hide_email == false
+        %dt Rent:
         %dd
-          %a{:href => "mailto:#{@property.landlord.user.email}"}= @property.landlord.user.email
-      %dt Phone:
-      - if @property.landlord.phone
-        %dd= @property.landlord.phone
+          = '$' + @property.price.to_s
+          per 
+          =@property.unit
+    .data-card
+      %h3.card-title Additional Info
+      %dl
+        %dt Summer Rental:
+        %dd= @property.summer ? 'Yes' : 'No'
+        %dt Parking:
+        %dd= @property.parking ? 'Yes' : 'No'
+        %dt Laundry:
+        %dd= @property.laundry ? 'included' : 'not included'
+        %dt Utilities:
+        - if @property.utilities != ''
+          %dd= @property.utilities
+  .medium-6.columns
+    .data-card
+      %h3.card-title Photos
+      - if @property.has_photo?
+        %ul.card-body.medium-block-grid-2.large-block-grid-3
+          - @property.photos.each do |photo|
+            %li
+              %a.expandable_image.th{:href => photo.photo.url(:large)}
+                = image_tag photo.photo.url(:thumb)
+    .data-card
+      %h3.card-title Contact
+      %dl
+        %dt Owner:
+        %dd= @property.landlord.name
+        %dt Email:
+        - if @property.landlord.hide_email == false
+          %dd
+            %a{:href => "mailto:#{@property.landlord.user.email}"}= @property.landlord.user.email
+        %dt Phone:
+        %dd
+          - if @property.landlord.phone
+            = @property.landlord.phone
+  .medium-6.columns
+
+%section.row
+  
